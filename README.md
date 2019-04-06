@@ -1,1 +1,8 @@
-# Class_Registration_System
+Class Registration System
+-------------------------
+
+### 1. INFO
+
+---
+
+명지대학교 융합소프트웨어학부 전공 수업 중 프로젝트로, 자바 기반 수강 신청 프로그램입니다.
