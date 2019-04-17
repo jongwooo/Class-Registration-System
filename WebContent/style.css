@@ -1,0 +1,5 @@
+@CHARSET "UTF-8";
+.center-align {
+  float: none;
+  margin: 0 auto;
+}
