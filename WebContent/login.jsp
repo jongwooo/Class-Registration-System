@@ -18,16 +18,20 @@
 <body>
 	<!-- NavBar -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="/Class_Registration_System/login.jsp"><img src="image/mju_logo.gif" alt="명지대 로고" width="30px" height="30px"><small> 명지대학교 수강신청 시스템</small></a>
+		<a class="navbar-brand" href="/Class_Registration_System/login.jsp">
+			<img src="image/mju_logo.gif" alt="명지대 로고" width="30px" height="30px">
+			<small>명지대학교 수강신청 시스템</small>
+		</a>
 	</nav>
 
 	<!--Login Form -->
 	<div class="container pt-5">
 		<div class="col-md-6 center-align">
-			<h1 class="text-center">Login</h1>
 			<div class="card bg-white">
+				<br>
+				<h1 class="text-center">Login</h1>
 
-				<form class="p-5" action="index.html" method="post">
+				<form class="p-5" action="" method="post">
 					<label for="userId">UserId</label>
 					<input type="text" name="userId" id="userId" placeholder="아이디" class="form-control">
 
@@ -36,7 +40,9 @@
 
 					<br>
 					<div class="button">
-						<button type="submit" class="hover-button"><span>로그인</span></button>
+						<button type="submit" class="hover-button">
+							<span>로그인</span>
+						</button>
 					</div>
 				</form>
 
