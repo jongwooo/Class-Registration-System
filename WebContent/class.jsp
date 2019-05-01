@@ -22,17 +22,20 @@
 <body>
 	<!-- NavBar -->
 	<nav class="navbar navbar-light bg-light">
-		<a class="navbar-brand" href="/Class_Registration_System/class.jsp">
+		<a class="navbar-brand" href="/Class_Registration_System/class.jsp?id=<%= request.getParameter("id") %>">
 			<img src="image/mju_logo.gif" alt="명지대 로고" width="30px" height="30px">
 			<small style="font-family:Sunflower;">명지대학교 수강신청 시스템</small>
 		</a>
 		<!-- Print UserId -->
-
-		<a href="/" class="btn btn-outline-primary btn-sm">로그아웃</a>
+		<a href="/Class_Registration_System/login.jsp" class="btn btn-outline-primary btn-sm">로그아웃</a>
 	</nav>
 
 	<!-- Select Class -->
-
+	<div class="container-fluid">
+		<p class="text-right">
+			<small style="font-family:Sunflower;"><%= request.getParameter("id") %> 님, 반갑습니다!</small>
+		</p>
+	</div>
 
 </body>
 
