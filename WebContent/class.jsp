@@ -17,6 +17,8 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Questrial|Sunflower:300" rel="stylesheet">
+	<!--Jquery CDN-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -35,7 +37,48 @@
 		<p class="text-right">
 			<small style="font-family:Sunflower;"><%= request.getParameter("id") %> 님, 반갑습니다!</small>
 		</p>
+		<div class="row">
+			<select class="form-control" name="campus" id="campus" onchange="campusChange()">
+				<option value="select">캠퍼스 선택</option>
+				<option value="yongin">용인캠퍼스</option>
+				<option value="seoul">서울캠퍼스</option>
+			</select>
+			<select class="form-control" name="college" id="college">
+				<option>분류 선택</option>
+			</select>
+			<select class="form-control" name="department" id="department">
+				<option>분류 선택</option>
+			</select>
+		</div>
 	</div>
+
+	<script>
+		function campusChange() {
+			var yongin = ["교양", "공과대학", "자연과학대학", "예술체육대학", "건축대학"];
+			var seoul = ["교양", "ICT융합대학", "경영대학", "사회과학대학", "인문대학", "법학대학"];
+			var select = ["분류 선택"];
+
+			var selectCampus = $("#campus").val();
+
+			var changeCampus;
+
+			if (selectCampus == "yongin") {
+				changeCampus = yongin;
+			} else if (selectCampus == "seoul") {
+				changeCampus = seoul;
+			} else {
+				changeCampus = select;
+			}
+
+			$('#college').empty();
+
+			for (var count = 0; count < changeCampus.length; count++) {
+				var option = $("<option>" + changeCampus[count] + "</option>");
+				$('#college').append(option);
+			}
+
+		}
+	</script>
 
 </body>
 
