@@ -33,52 +33,28 @@
 	</nav>
 
 	<!-- Select Class -->
-	<div class="container-fluid">
+	<div class="container">
 		<p class="text-right">
 			<small style="font-family:Sunflower;"><%= request.getParameter("id") %> 님, 반갑습니다!</small>
 		</p>
-		<div class="row">
-			<select class="form-control" name="campus" id="campus" onchange="campusChange()">
+		<div class="row pl-3">
+			<select name="campus" id="campus" onchange="campusChange()">
 				<option value="select">캠퍼스 선택</option>
-				<option value="yongin">용인캠퍼스</option>
-				<option value="seoul">서울캠퍼스</option>
+				<option value="용인캠퍼스">용인캠퍼스</option>
+				<option value="서울캠퍼스">서울캠퍼스</option>
 			</select>
-			<select class="form-control" name="college" id="college">
+			<select name="college" id="college">
 				<option>분류 선택</option>
 			</select>
-			<select class="form-control" name="department" id="department">
+			<select name="department" id="department">
 				<option>분류 선택</option>
 			</select>
 		</div>
+		<hr>
 	</div>
-
-	<script>
-		function campusChange() {
-			var yongin = ["교양", "공과대학", "자연과학대학", "예술체육대학", "건축대학"];
-			var seoul = ["교양", "ICT융합대학", "경영대학", "사회과학대학", "인문대학", "법학대학"];
-			var select = ["분류 선택"];
-
-			var selectCampus = $("#campus").val();
-
-			var changeCampus;
-
-			if (selectCampus == "yongin") {
-				changeCampus = yongin;
-			} else if (selectCampus == "seoul") {
-				changeCampus = seoul;
-			} else {
-				changeCampus = select;
-			}
-
-			$('#college').empty();
-
-			for (var count = 0; count < changeCampus.length; count++) {
-				var option = $("<option>" + changeCampus[count] + "</option>");
-				$('#college').append(option);
-			}
-
-		}
-	</script>
+	
+  <!-- JS Files -->
+	<script type="text/javascript" src="class.js"></script>
 
 </body>
 
