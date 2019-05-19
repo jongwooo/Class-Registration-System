@@ -38,22 +38,32 @@
 			<small style="font-family:Sunflower;"><%= request.getParameter("id") %> 님, 반갑습니다!</small>
 		</p>
 		<div class="row pl-3">
-			<select name="campus" id="campus" onchange="campusChange()">
-				<option value="select">캠퍼스 선택</option>
-				<option value="용인캠퍼스">용인캠퍼스</option>
-				<option value="서울캠퍼스">서울캠퍼스</option>
-			</select>
-			<select name="college" id="college">
-				<option>분류 선택</option>
-			</select>
-			<select name="department" id="department">
-				<option>분류 선택</option>
-			</select>
+			<form class="" action="classView.jsp?id=<%= request.getParameter("id") %>" method="post">
+				<select name="campus" id="campus" onchange="campusChange()">
+					<option value="select">캠퍼스 선택</option>
+					<option value="용인캠퍼스">용인캠퍼스</option>
+					<option value="서울캠퍼스">서울캠퍼스</option>
+				</select>
+				<select name="college" id="college">
+					<option>분류 선택</option>
+				</select>
+				<select name="department" id="department">
+					<option>분류 선택</option>
+				</select>
+				<input type="submit" class="btn btn-primary btn-sm" value="선택">
+			</form>
 		</div>
 		<hr>
 	</div>
-	
-  <!-- JS Files -->
+	<div class="container">
+		<% if (request.getParameter("department") == null) { %>
+		강좌 선택
+		<% } else { %>
+		<%= request.getParameter("department") %>
+		<% } %>
+	</div>
+
+	<!-- JS Files -->
 	<script type="text/javascript" src="class.js"></script>
 
 </body>

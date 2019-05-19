@@ -24,7 +24,7 @@
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="/Class_Registration_System/login.jsp">
 			<img src="image/mju_logo.gif" alt="명지대 로고" width="30px" height="30px">
-			<small style="font-family:Sunflower;">명지대학교 수강신청 시스템</small>
+			<small style="font-family: Sunflower;">명지대학교 수강신청 시스템</small>
 		</a>
 	</nav>
 
@@ -34,22 +34,23 @@
 			<div class="card bg-white">
 				<br>
 				<% if (request.getParameter("error") == null) { %>
-				<h1 class="text-center" style="font-family:Questrial;">Login</h1>
+				<h1 class="text-center" style="font-family: Questrial;">Login</h1>
 				<% } else { %>
-				<h1 class="text-center" style="font-family:Questrial;">Login</h1>
+				<h1 class="text-center" style="font-family: Questrial;">Login</h1>
 				<div class="alert alert-danger" role="alert">
-					<p class="text-center" style="font-family:Questrial;margin-bottom:0;">아이디와 비밀번호를 확인해주세요</p>
+					<p style="font-family: Questrial; margin-bottom: 0; text-align: center;">아이디와
+						비밀번호를 확인해주세요
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</p>
 				</div>
 				<% } %>
 
 				<form class="pt-3 pl-5 pr-5 pb-5" action="authentication.jsp" method="post">
-					<label for="userId" style="font-family:Questrial;">UserId</label>
-					<input type="text" name="userId" id="userId" placeholder="아이디" class="form-control">
-
-					<label for="password" style="font-family:Questrial;">Password</label>
-					<input type="password" name="password" id="password" placeholder="비밀번호" class="form-control">
-
-					<br>
+					<label for="userId" style="font-family: Questrial;">UserId</label>
+					<input type="text" name="userId" id="userId" placeholder="아이디" class="form-control"> <label for="password" style="font-family: Questrial;">Password</label> <input type="password" name="password" id="password" placeholder="비밀번호"
+						class="form-control"> <br>
 					<div class="button">
 						<button type="submit" class="hover-button">
 							<span>로그인</span>

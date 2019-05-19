@@ -1,6 +1,6 @@
 function campusChange() {
-  var yongin = ["교양", "공과대학", "자연과학대학", "예술체육대학", "건축대학"];
-  var seoul = ["교양", "ICT융합대학", "경영대학", "사회과학대학", "인문대학", "법학대학"];
+  var yongin = ["분류 선택", "교양", "공과대학", "자연과학대학", "예술체육대학", "건축대학"];
+  var seoul = ["분류 선택", "교양", "ICT융합대학", "경영대학", "사회과학대학", "인문대학", "법학대학"];
   var select = ["분류 선택"];
 
   var selectCampus = $("#campus").val();
@@ -25,7 +25,6 @@ function campusChange() {
 }
 
 function yonginChange() {
-  console.log("용인");
   var generalY = ["영어교양", "기초교양", "선택교양"];
   var engineering = ["전기공학과", "컴퓨터공학과"];
   var science = ["수학과", "물리학과", "화학과", "식품영양학과", "생명과학정보학과"];
@@ -59,7 +58,6 @@ function yonginChange() {
 }
 
 function seoulChange() {
-  console.log("서울");
   var generalS = ["영어교양", "기초교양", "선택교양"];
   var ict = ["디지털콘텐츠", "융합소프트웨어"];
   var business = ["경영학과", "국제통상학과", "경영정보학과", "부동산학과", "경영교육혁신센터"];
