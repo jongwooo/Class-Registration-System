@@ -49,3 +49,11 @@ div.button {
   align-items: center;
   justify-content: center;
 }
+
+table {
+  width: 100%;
+  border: 1px solid #444444;
+}
+th, td {
+  border: 1px solid #444444;
+}
