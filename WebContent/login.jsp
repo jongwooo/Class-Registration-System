@@ -34,12 +34,14 @@
 			<div class="card bg-white">
 				<br>
 				<% if (request.getParameter("error") == null) { %>
-		           <h1 class="text-center" style="font-family:Questrial;">Login</h1> 
-		        <% } else { %>
-		            <h1 class="text-center" style="font-family:Questrial;">Login</h1>
-		            <label class="text-center" style="font-family:Questrial;color:red;">아이디와 비밀번호를 확인해주세요</label>
-		        <% } %>
-			
+				<h1 class="text-center" style="font-family:Questrial;">Login</h1>
+				<% } else { %>
+				<h1 class="text-center" style="font-family:Questrial;">Login</h1>
+				<div class="alert alert-danger" role="alert">
+					<p class="text-center" style="font-family:Questrial;margin-bottom:0;">아이디와 비밀번호를 확인해주세요</p>
+				</div>
+				<% } %>
+
 				<form class="pt-3 pl-5 pr-5 pb-5" action="authentication.jsp" method="post">
 					<label for="userId" style="font-family:Questrial;">UserId</label>
 					<input type="text" name="userId" id="userId" placeholder="아이디" class="form-control">
