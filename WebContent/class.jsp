@@ -28,10 +28,10 @@
 			<img src="image/mju_logo.gif" alt="명지대 로고" width="30px" height="30px">
 			<small style="font-family:Sunflower;">명지대학교 수강신청 시스템</small>
 		</a>
-		<p class="text-right">
+		<div class="text-right">
 			<a href="/Class_Registration_System/myBag.jsp?id=<%= request.getParameter("id") %>" class="btn btn-outline-primary btn-sm">책가방</a>
 			<a href="/Class_Registration_System/login.jsp" class="btn btn-outline-primary btn-sm">로그아웃</a>
-		</p>
+		</div>
 	</nav>
 
 	<!-- Select Class -->
@@ -42,7 +42,7 @@
 		<div class="row pl-3">
 			<form class="" action="classView.jsp?id=<%= request.getParameter("id") %>" method="post">
 				<select name="campus" id="campus" onchange="campusChange()">
-					<option value="select">캠퍼스 선택</option>
+					<option value="캠퍼스 선택">캠퍼스 선택</option>
 					<option value="용인캠퍼스">용인캠퍼스</option>
 					<option value="서울캠퍼스">서울캠퍼스</option>
 				</select>
@@ -58,13 +58,34 @@
 		<hr>
 	</div>
 	<div class="container">
-		<% if (request.getParameter("department") == null) { %>
-		강좌 선택
+		<% if (request.getParameter("campus") == null || request.getParameter("college") == null || request.getParameter("department") == null) { %>
+		<h5 class="lecture-list">강좌 선택</h5>
 		<% } else { %>
-		<%= request.getParameter("department") %>
+		<h5 class="lecture-list">
+			<%= request.getParameter("campus") %> /
+			<%= request.getParameter("college") %> /
+			<%= request.getParameter("department") %>
+		</h5>
 		<% } %>
 	</div>
-
+	<div class="container">
+		<table>
+			<thead>
+				<tr>
+					<th>강좌 번호</th>
+					<th>강좌명</th>
+					<th>담당 교수</th>
+					<th>학점</th>
+					<th>강의 시간</th>
+					<th>담기</th>
+					<th>신청</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- Show Lectures -->
+			</tbody>
+		</table>
+	</div>
 	<!-- JS Files -->
 	<script type="text/javascript" src="class.js"></script>
 

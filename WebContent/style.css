@@ -50,7 +50,12 @@ div.button {
   justify-content: center;
 }
 
+.lecture-list {
+  text-align: center;
+}
+
 table {
+  text-align: center;
   width: 100%;
   border: 1px solid #444444;
 }
