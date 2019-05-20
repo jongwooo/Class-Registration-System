@@ -2,16 +2,24 @@
     pageEncoding="UTF-8"%>
 
   <%
-    String[] userId = {"h", "k", "l"};
-    String[] password = {"1", "2", "3"};
+    String[] studentID = {"h", "k", "l"};
+    String[] studentPW = {"1", "2", "3"};
+
+    String[] professorID = {"choi", "kim", "lee"};
+    String[] professorPW = {"1", "2", "3"};
 
     String id = request.getParameter("userId");
     String pw = request.getParameter("password");
 
     String redirectUrl = "login.jsp?error=login-failed";
-    for (int i = 0; i < userId.length; i++) {
-        if (userId[i].equals(id) && password[i].equals(pw))
+    for (int i = 0; i < studentID.length; i++) {
+        if (studentID[i].equals(id) && studentPW[i].equals(pw))
             redirectUrl = "class.jsp?id=" + id;
+    }
+
+    for (int j = 0; j < professorID.length; j++) {
+        if (professorID[j].equals(id) && professorPW[j].equals(pw))
+            redirectUrl = "professor.jsp?id=" + id;
     }
     response.sendRedirect(redirectUrl);
 %>
