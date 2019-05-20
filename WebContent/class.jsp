@@ -28,8 +28,10 @@
 			<img src="image/mju_logo.gif" alt="명지대 로고" width="30px" height="30px">
 			<small style="font-family:Sunflower;">명지대학교 수강신청 시스템</small>
 		</a>
-		<!-- Print UserId -->
-		<a href="/Class_Registration_System/login.jsp" class="btn btn-outline-primary btn-sm">로그아웃</a>
+		<p class="text-right">
+			<a href="/Class_Registration_System/myBag.jsp?id=<%= request.getParameter("id") %>" class="btn btn-outline-primary btn-sm">책가방</a>
+			<a href="/Class_Registration_System/login.jsp" class="btn btn-outline-primary btn-sm">로그아웃</a>
+		</p>
 	</nav>
 
 	<!-- Select Class -->
