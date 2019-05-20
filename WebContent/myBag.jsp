@@ -28,10 +28,10 @@
 			<img src="image/mju_logo.gif" alt="명지대 로고" width="30px" height="30px">
 			<small style="font-family:Sunflower;">명지대학교 수강신청 시스템</small>
 		</a>
-		<p class="text-right">
+		<div class="text-right">
 			<a href="/Class_Registration_System/class.jsp?id=<%= request.getParameter("id") %>" class="btn btn-outline-primary btn-sm">강좌 선택</a>
 			<a href="/Class_Registration_System/login.jsp" class="btn btn-outline-primary btn-sm">로그아웃</a>
-		</p>
+		</div>
 	</nav>
 
   <!-- My Bag -->
@@ -41,6 +41,54 @@
 		</p>
 		<hr>
 	</div>
+	<!-- Basket -->
+	<div class="container">
+		<h5 class="lecture-list">담은 강좌 목록</h5>
+		<table>
+			<thead>
+				<tr>
+					<th>강좌 번호</th>
+					<th>강좌명</th>
+					<th>담당 교수</th>
+					<th>학점</th>
+					<th>강의 시간</th>
+					<th>담기</th>
+					<th>비고</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- Show Lectures -->
+			</tbody>
+		</table>
+		<br>
+		<br>
+		<hr>
+	</div>
+
+	<!-- Sincheong -->
+	<div class="container">
+		<h5 class="lecture-list">신청 강좌 목록</h5>
+		<table>
+			<thead>
+				<tr>
+					<th>강좌 번호</th>
+					<th>강좌명</th>
+					<th>담당 교수</th>
+					<th>학점</th>
+					<th>강의 시간</th>
+					<th>담기</th>
+					<th>비고</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- Show Lectures -->
+			</tbody>
+		</table>
+		<br>
+		<br>
+		<hr>
+	</div>
+
 </body>
 
 </html>
