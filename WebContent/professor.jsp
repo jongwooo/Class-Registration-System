@@ -40,16 +40,39 @@
 		<hr>
 	</div>
 
-  <!-- Add Lectures -->
-  <div class="container">
-		<form action="" method="post">
-
-    </form>
+	<!-- Add Lectures -->
+	<div class="container">
+		<h5 class="lecture-list">강좌 등록</h5>
+		<div class="row">
+			<form class="form-inline" style="margin: 0 auto;" action="" method="post">
+				<input type="text" class="form-control" name="" value="" placeholder="강좌 번호">
+				<input type="text" class="form-control" name="" value="" placeholder="강좌명">
+				<input type="text" class="form-control" name="" value="" placeholder="학점">
+				<input type="text" class="form-control" name="" value="" placeholder="강의 시간">
+				<input type="submit" class="btn btn-primary" name="" value="강좌 등록">
+			</form>
+		</div>
+		<br>
+		<hr>
 	</div>
 
-	<!-- Lectures -->
+	<!-- My Lectures -->
 	<div class="container">
 		<h5 class="lecture-list">강좌 목록</h5>
+		<table>
+			<thead>
+				<tr>
+					<th>강좌 번호</th>
+					<th>강좌명</th>
+					<th>학점</th>
+					<th>강의 시간</th>
+					<th>비고</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- Show Lectures -->
+			</tbody>
+		</table>
 		<hr>
 	</div>
 
