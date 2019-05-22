@@ -46,11 +46,11 @@
 	<div class="container">
 		<h5 class="lecture-list">강좌 등록</h5>
 		<div class="row">
-			<form class="form-inline" style="margin: 0 auto;" action="" method="post">
-				<input type="text" class="form-control" name="" value="" placeholder="강좌 번호">
-				<input type="text" class="form-control" name="" value="" placeholder="강좌명">
-				<input type="text" class="form-control" name="" value="" placeholder="학점">
-				<input type="text" class="form-control" name="" value="" placeholder="강의 시간">
+			<form class="form-inline" style="margin: 0 auto;" action="addLecture.jsp?id=<%= request.getParameter("id") %>" method="post">
+				<input type="text" class="form-control" name="lectureNum" placeholder="강좌 번호">
+				<input type="text" class="form-control" name="lectureName" placeholder="강좌명">
+				<input type="text" class="form-control" name="lectureCredit" placeholder="학점">
+				<input type="text" class="form-control" name="lectureTime" placeholder="강의 시간">
 				<input type="submit" class="btn btn-primary" name="" value="강좌 등록">
 			</form>
 		</div>
@@ -73,8 +73,18 @@
 			</thead>
 			<tbody>
 				<!-- Show Lectures -->
+				<% if (request.getParameter("lectureNum") != null && request.getParameter("lectureName") != null && request.getParameter("lectureCredit") != null && request.getParameter("lectureTime") != null) { %>
+				<tr>
+					<td><%= request.getParameter("lectureNum") %></td>
+					<td><%= request.getParameter("lectureName") %></td>
+					<td><%= request.getParameter("lectureCredit") %></td>
+					<td><%= request.getParameter("lectureTime") %></td>
+					<td><a href="/Class_Registration_System/professor.jsp?id=<%= request.getParameter("id") %>">[ 삭제 ]</a></td>
+				</tr>
+				<% } %>
 			</tbody>
 		</table>
+		<br>
 		<hr>
 	</div>
 
