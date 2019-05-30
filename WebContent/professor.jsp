@@ -39,12 +39,36 @@
 		<p class="text-right">
 			<small style="font-family:Sunflower;"><%= request.getParameter("id") %> 교수님, 반갑습니다!</small>
 		</p>
+		<div class="row pl-3">
+			<form class="" action="professorView.jsp?id=<%= request.getParameter("id") %>" method="post">
+				<select name="campus" id="campus" onchange="campusChange()">
+					<option value="캠퍼스 선택">캠퍼스 선택</option>
+					<option value="용인캠퍼스">용인캠퍼스</option>
+					<option value="서울캠퍼스">서울캠퍼스</option>
+				</select>
+				<select name="college" id="college">
+					<option>분류 선택</option>
+				</select>
+				<select name="department" id="department">
+					<option>분류 선택</option>
+				</select>
+				<input type="submit" class="btn btn-primary btn-sm" value="선택">
+			</form>
+		</div>
 		<hr>
 	</div>
 
 	<!-- Add Lectures -->
 	<div class="container">
-		<h5 class="lecture-list">강좌 등록</h5>
+		<% if (request.getParameter("campus") == null || request.getParameter("college") == null || request.getParameter("department") == null) { %>
+			<h5 class="lecture-list">강좌 등록</h5>
+		<% } else { %>
+			<h5 class="lecture-list">
+				<%= request.getParameter("campus") %> /
+				<%= request.getParameter("college") %> /
+				<%= request.getParameter("department") %>
+			</h5>
+		<% } %>
 		<div class="row">
 			<form class="form-inline" style="margin: 0 auto;" action="addLecture.jsp?id=<%= request.getParameter("id") %>" method="post">
 				<input type="text" class="form-control" name="lectureNum" placeholder="강좌 번호">
@@ -87,6 +111,8 @@
 		<br>
 		<hr>
 	</div>
+	<!-- JS Files -->
+	<script type="text/javascript" src="class.js"></script>
 
 </body>
 
