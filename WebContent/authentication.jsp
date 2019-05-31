@@ -11,7 +11,7 @@
 	String redirectUrl = "login.jsp?error=login-failed";
 
 	try {
-		String loginPath = application.getRealPath("/WEB-INF/data/login");
+		String loginPath = application.getRealPath("/WEB-INF/data/user/login");
 		Scanner scanner = new Scanner(new File(loginPath));
 
 		while (scanner.hasNext()) {
