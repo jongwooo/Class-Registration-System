@@ -26,21 +26,27 @@
 <body>
 	<!-- NavBar -->
 	<nav class="navbar navbar-light bg-light">
-		<a class="navbar-brand" href="/Class_Registration_System/professor.jsp?id=<%= request.getParameter("id") %>">
+		<a class="navbar-brand" href="/Class_Registration_System/professor.jsp?id=<%= request.getParameter("id") %>&name=<%= request.getParameter("name") %>">
 			<img src="image/mju_logo.gif" alt="명지대 로고" width="30px" height="30px">
 			<small style="font-family:Sunflower;">명지대학교 수강신청 시스템</small>
 		</a>
 		<div class="text-right">
-			<a href="/Class_Registration_System/login.jsp" class="btn btn-outline-primary btn-sm">로그아웃</a>
+			<a href="/Class_Registration_System/logout.jsp" class="btn btn-outline-primary btn-sm">로그아웃</a>
 		</div>
 	</nav>
 
 	<div class="container">
 		<p class="text-right">
-			<small style="font-family:Sunflower;"><%= request.getParameter("id") %> 교수님, 반갑습니다!</small>
+			<small style="font-family:Sunflower;"><%= request.getParameter("name") %> 교수님, 반갑습니다!</small>
 		</p>
-		<div class="row pl-3">
-			<form class="" action="professorView.jsp?id=<%= request.getParameter("id") %>" method="post">
+		<hr>
+	</div>
+
+	<!-- Add Lectures -->
+	<div class="container">
+		<h5 class="lecture-list">강좌 등록</h5>
+		<div class="row">
+			<form class="text-center" style="margin: 0 auto;" action="addLecture.jsp?id=<%= request.getParameter("id") %>&name=<%= request.getParameter("name") %>" method="post">
 				<select name="campus" id="campus" onchange="campusChange()">
 					<option value="캠퍼스 선택">캠퍼스 선택</option>
 					<option value="용인캠퍼스">용인캠퍼스</option>
@@ -52,25 +58,6 @@
 				<select name="department" id="department">
 					<option>분류 선택</option>
 				</select>
-				<input type="submit" class="btn btn-primary btn-sm" value="선택">
-			</form>
-		</div>
-		<hr>
-	</div>
-
-	<!-- Add Lectures -->
-	<div class="container">
-		<% if (request.getParameter("campus") == null || request.getParameter("college") == null || request.getParameter("department") == null) { %>
-			<h5 class="lecture-list">강좌 등록</h5>
-		<% } else { %>
-			<h5 class="lecture-list">
-				<%= request.getParameter("campus") %> /
-				<%= request.getParameter("college") %> /
-				<%= request.getParameter("department") %>
-			</h5>
-		<% } %>
-		<div class="row">
-			<form class="form-inline" style="margin: 0 auto;" action="addLecture.jsp?id=<%= request.getParameter("id") %>" method="post">
 				<input type="text" class="form-control" name="lectureNum" placeholder="강좌 번호">
 				<input type="text" class="form-control" name="lectureName" placeholder="강좌명">
 				<input type="text" class="form-control" name="lectureCredit" placeholder="학점">
@@ -88,6 +75,7 @@
 		<table>
 			<thead>
 				<tr>
+					<th>소속</th>
 					<th>강좌 번호</th>
 					<th>강좌명</th>
 					<th>학점</th>
@@ -97,13 +85,14 @@
 			</thead>
 			<tbody>
 				<!-- Show Lectures -->
-				<% if (request.getParameter("lectureNum") != null && request.getParameter("lectureName") != null && request.getParameter("lectureCredit") != null && request.getParameter("lectureTime") != null) { %>
+				<% if (request.getParameter("department") != null && request.getParameter("lectureNum") != null && request.getParameter("lectureName") != null && request.getParameter("lectureCredit") != null && request.getParameter("lectureTime") != null) { %>
 				<tr>
+					<td><%= request.getParameter("department") %></td>
 					<td><%= request.getParameter("lectureNum") %></td>
 					<td><%= request.getParameter("lectureName") %></td>
 					<td><%= request.getParameter("lectureCredit") %></td>
 					<td><%= request.getParameter("lectureTime") %></td>
-					<td><a href="/Class_Registration_System/professor.jsp?id=<%= request.getParameter("id") %>">[ 삭제 ]</a></td>
+					<td><a href="/Class_Registration_System/professor.jsp?id=<%= request.getParameter("id") %>&name=<%= request.getParameter("name") %>">[ 삭제 ]</a></td>
 				</tr>
 				<% } %>
 			</tbody>

@@ -32,14 +32,14 @@
 		</a>
 		<div class="text-right">
 			<a href="/Class_Registration_System/class.jsp?id=<%= request.getParameter("id") %>" class="btn btn-outline-primary btn-sm">강좌 선택</a>
-			<a href="/Class_Registration_System/login.jsp" class="btn btn-outline-primary btn-sm">로그아웃</a>
+			<a href="/Class_Registration_System/logout.jsp" class="btn btn-outline-primary btn-sm">로그아웃</a>
 		</div>
 	</nav>
 
   <!-- My Bag -->
   <div class="container">
 		<p class="text-right">
-			<small style="font-family:Sunflower;"><%= request.getParameter("id") %> 님, 반갑습니다!</small>
+			<small style="font-family:Sunflower;"><%= request.getParameter("name") %> 님, 반갑습니다!</small>
 		</p>
 		<hr>
 	</div>

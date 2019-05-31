@@ -1,25 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ page import="java.io.*"%>
+<%@ page import="java.util.Scanner"%>
 
-  <%
-    String[] studentID = {"h", "k", "l"};
-    String[] studentPW = {"1", "2", "3"};
 
-    String[] professorID = {"choi", "kim", "lee"};
-    String[] professorPW = {"1", "2", "3"};
+<%
+	String id = request.getParameter("userId");
+	String pw = request.getParameter("password");
 
-    String id = request.getParameter("userId");
-    String pw = request.getParameter("password");
+	String redirectUrl = "login.jsp?error=login-failed";
 
-    String redirectUrl = "login.jsp?error=login-failed";
-    for (int i = 0; i < studentID.length; i++) {
-        if (studentID[i].equals(id) && studentPW[i].equals(pw))
-            redirectUrl = "class.jsp?id=" + id;
-    }
+	try {
+		String loginPath = application.getRealPath("/WEB-INF/data/login");
+		Scanner scanner = new Scanner(new File(loginPath));
 
-    for (int j = 0; j < professorID.length; j++) {
-        if (professorID[j].equals(id) && professorPW[j].equals(pw))
-            redirectUrl = "professor.jsp?id=" + id;
-    }
-    response.sendRedirect(redirectUrl);
+		while (scanner.hasNext()) {
+			String userID = scanner.next();
+			String userPW = scanner.next();
+			String userType = scanner.next();
+			String userName = scanner.next();
+			String userName_en = java.net.URLEncoder.encode(userName, "UTF-8");
+
+			if (userID.equals(id) && userPW.equals(pw)) {
+				if (userType.equals("s")) {
+					redirectUrl = "class.jsp?id=" + id + "&name=" + userName_en;
+					scanner.close();
+					break;
+				} else if (userType.equals("p"))
+					redirectUrl = "professor.jsp?id=" + id + "&name=" + userName_en;
+				scanner.close();
+				break;
+			}
+		}
+	} catch (FileNotFoundException e) {
+
+	}
+
+	response.sendRedirect(redirectUrl);
 %>

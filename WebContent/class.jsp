@@ -26,23 +26,23 @@
 <body>
 	<!-- NavBar -->
 	<nav class="navbar navbar-light bg-light">
-		<a class="navbar-brand" href="/Class_Registration_System/class.jsp?id=<%= request.getParameter("id") %>">
+		<a class="navbar-brand" href="/Class_Registration_System/class.jsp?id=<%= request.getParameter("id") %>&name=<%= request.getParameter("name") %>">
 			<img src="image/mju_logo.gif" alt="명지대 로고" width="30px" height="30px">
 			<small style="font-family:Sunflower;">명지대학교 수강신청 시스템</small>
 		</a>
 		<div class="text-right">
-			<a href="/Class_Registration_System/myBag.jsp?id=<%= request.getParameter("id") %>" class="btn btn-outline-primary btn-sm">책가방</a>
-			<a href="/Class_Registration_System/login.jsp" class="btn btn-outline-primary btn-sm">로그아웃</a>
+			<a href="/Class_Registration_System/myBag.jsp?id=<%= request.getParameter("id") %>&name=<%= request.getParameter("name") %>" class="btn btn-outline-primary btn-sm">책가방</a>
+			<a href="/Class_Registration_System/logout.jsp" class="btn btn-outline-primary btn-sm">로그아웃</a>
 		</div>
 	</nav>
 
 	<!-- Select Class -->
 	<div class="container">
 		<p class="text-right">
-			<small style="font-family:Sunflower;"><%= request.getParameter("id") %> 님, 반갑습니다!</small>
+			<small style="font-family:Sunflower;"><%= request.getParameter("name") %> 님, 반갑습니다!</small>
 		</p>
 		<div class="row pl-3">
-			<form class="" action="classView.jsp?id=<%= request.getParameter("id") %>" method="post">
+			<form class="" action="classView.jsp?id=<%= request.getParameter("id") %>&name=<%= request.getParameter("name") %>" method="post">
 				<select name="campus" id="campus" onchange="campusChange()">
 					<option value="캠퍼스 선택">캠퍼스 선택</option>
 					<option value="용인캠퍼스">용인캠퍼스</option>
