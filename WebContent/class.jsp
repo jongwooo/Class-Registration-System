@@ -64,7 +64,7 @@
 		</p>
 		<div class="row pl-3">
 			<form class=""
-				action="classView.jsp?id=<%=request.getParameter("id")%>&name=<%=request.getParameter("name")%>"
+				action="classView.jsp?id=<%=request.getParameter("id")%>&name=<%=request.getParameter("name")%>&page=class"
 				method="post">
 				<select name="campus" id="campus" onchange="campusChange()">
 					<option value="캠퍼스 선택">캠퍼스 선택</option>
@@ -122,10 +122,18 @@
 
 						while (scanner.hasNext()) {
 							String lectureNum = scanner.next();
+
 							String lectureName = scanner.next();
+							String lectureName_en = java.net.URLEncoder.encode(lectureName, "UTF-8");
+
 							String professor = scanner.next();
+							String professor_en = java.net.URLEncoder.encode(professor, "UTF-8");
+
 							String credit = scanner.next();
+							String credit_en = java.net.URLEncoder.encode(credit, "UTF-8");
+
 							String time = scanner.next();
+							String time_en = java.net.URLEncoder.encode(time, "UTF-8");
 				%>
 				<tr>
 					<td><%= lectureNum%></td>
@@ -133,11 +141,10 @@
 					<td><%= professor%></td>
 					<td><%= credit%></td>
 					<td><%= time%></td>
-					<td><a href="#">담기</a></td>
-					<td><a href="#">신청</a></td>
+					<td><a href="/Class_Registration_System/addBag.jsp?id=<%=request.getParameter("id")%>&name=<%=request.getParameter("name")%>&lectureNum=<%= lectureNum%>&lectureName=<%= lectureName_en%>&professor=<%= professor_en%>&credit=<%= credit_en%>&time=<%= time_en%>">담기</a></td>
+					<td><a href="/Class_Registration_System/addSincheong.jsp?id=<%=request.getParameter("id")%>&name=<%=request.getParameter("name")%>&page=class&lectureNum=<%= lectureNum%>&lectureName=<%= lectureName_en%>&professor=<%= professor_en%>&credit=<%= credit_en%>&time=<%= time_en%>">신청</a></td>
 				</tr>
 				<%
-
 						}
 
 					} catch (FileNotFoundException e) {
