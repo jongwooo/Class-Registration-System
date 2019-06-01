@@ -35,7 +35,7 @@
 
 	try {
 		FileWriter fw = new FileWriter(filePath + "/sincheong", true);
-		String lecture = "\n" + lectureNum + " " + lectureName + " " + professor + " " + credit + " " + time;
+		String lecture = lectureNum + " " + lectureName + " " + professor + " " + credit + " " + time + "\n";
 		fw.write(lecture);
 		fw.close();
 	} catch (FileNotFoundException e) {

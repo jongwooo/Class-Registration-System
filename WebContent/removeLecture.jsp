@@ -28,7 +28,7 @@
 		String dummy = "";
 		String line;
 
-		for (int i = 0; i < countLine; i++) {
+		for (int i = 1; i < countLine; i++) {
 			line = br.readLine();
 			dummy += (line + "\n");
 		}

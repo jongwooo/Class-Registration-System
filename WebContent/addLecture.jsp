@@ -31,7 +31,7 @@
 	String redirectUrl = "professor.jsp?id=" + id + "&name=" + userName_en + "&campus=" + campus
 			+ "&college=" + college_en + "&department=" + department_en;
 
-	String line = "\n" + lectureNum + " " + lectureName + " " + userName + " " + credit + " " + time;
+	String line = lectureNum + " " + lectureName + " " + userName + " " + credit + " " + time + "\n";
 
 	String filePath = application.getRealPath("/WEB-INF/data/" + campus + "/" + college) + "/" + department;
 
