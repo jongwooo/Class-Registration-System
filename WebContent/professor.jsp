@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.io.*"%>
+<%@ page import="java.util.Scanner"%>
 <!DOCTYPE html>
 <html>
 
@@ -42,11 +44,11 @@
 		<hr>
 	</div>
 
-	<!-- Add Lectures -->
+	<!-- Search Lectures -->
 	<div class="container">
-		<h5 class="lecture-list">강좌 등록</h5>
+		<h5 class="lecture-list">강좌 검색</h5>
 		<div class="row">
-			<form class="text-center" style="margin: 0 auto;" action="addLecture.jsp?id=<%= request.getParameter("id") %>&name=<%= request.getParameter("name") %>" method="post">
+			<form class="text-center" style="margin: 0 auto;" action="classView.jsp?id=<%= request.getParameter("id") %>&name=<%= request.getParameter("name") %>&page=professor" method="post">
 				<select name="campus" id="campus" onchange="campusChange()">
 					<option value="캠퍼스 선택">캠퍼스 선택</option>
 					<option value="용인캠퍼스">용인캠퍼스</option>
@@ -58,10 +60,22 @@
 				<select name="department" id="department">
 					<option>분류 선택</option>
 				</select>
+				<input type="submit" class="btn btn-primary" name="" value="강좌 찾기">
+			</form>
+		</div>
+		<br>
+		<hr>
+	</div>
+
+	<!-- Add Lectures -->
+	<div class="container">
+		<h5 class="lecture-list">강좌 등록</h5>
+		<div class="row">
+			<form class="text-center" style="margin: 0 auto;" action="addLecture.jsp?id=<%= request.getParameter("id") %>&name=<%= request.getParameter("name") %>&campus=<%=request.getParameter("campus")%>&college=<%=request.getParameter("college")%>&department=<%=request.getParameter("department")%>" method="post">
 				<input type="text" class="form-control" name="lectureNum" placeholder="강좌 번호">
 				<input type="text" class="form-control" name="lectureName" placeholder="강좌명">
-				<input type="text" class="form-control" name="lectureCredit" placeholder="학점">
-				<input type="text" class="form-control" name="lectureTime" placeholder="강의 시간">
+				<input type="text" class="form-control" name="credit" placeholder="학점">
+				<input type="text" class="form-control" name="time" placeholder="강의 시간">
 				<input type="submit" class="btn btn-primary" name="" value="강좌 등록">
 			</form>
 		</div>
@@ -71,13 +85,30 @@
 
 	<!-- My Lectures -->
 	<div class="container">
+		<%
+			if (request.getParameter("campus") == null || request.getParameter("college") == null
+					|| request.getParameter("department") == null) {
+		%>
 		<h5 class="lecture-list">강좌 목록</h5>
+		<%
+			} else {
+		%>
+		<h5 class="lecture-list">
+			<%=request.getParameter("campus")%>
+			/
+			<%=request.getParameter("college")%>
+			/
+			<%=request.getParameter("department")%>
+		</h5>
+		<%
+			}
+		%>
 		<table>
 			<thead>
 				<tr>
-					<th>소속</th>
 					<th>강좌 번호</th>
 					<th>강좌명</th>
+					<th>담당 교수</th>
 					<th>학점</th>
 					<th>강의 시간</th>
 					<th>비고</th>
@@ -85,16 +116,45 @@
 			</thead>
 			<tbody>
 				<!-- Show Lectures -->
-				<% if (request.getParameter("department") != null && request.getParameter("lectureNum") != null && request.getParameter("lectureName") != null && request.getParameter("lectureCredit") != null && request.getParameter("lectureTime") != null) { %>
+				<%
+					try {
+						String lecturePath = application.getRealPath("/WEB-INF/data/" + request.getParameter("campus") + "/"
+								+ request.getParameter("college") + "/" + request.getParameter("department"));
+						Scanner scanner = new Scanner(new File(lecturePath));
+						int count = 0;
+
+						while (scanner.hasNext()) {
+							count++;
+
+							String lectureNum = scanner.next();
+
+							String lectureName = scanner.next();
+							String lectureName_en = java.net.URLEncoder.encode(lectureName, "UTF-8");
+
+							String professor = scanner.next();
+							String professor_en = java.net.URLEncoder.encode(professor, "UTF-8");
+
+							String credit = scanner.next();
+							String credit_en = java.net.URLEncoder.encode(credit, "UTF-8");
+
+							String time = scanner.next();
+							String time_en = java.net.URLEncoder.encode(time, "UTF-8");
+				%>
 				<tr>
-					<td><%= request.getParameter("department") %></td>
-					<td><%= request.getParameter("lectureNum") %></td>
-					<td><%= request.getParameter("lectureName") %></td>
-					<td><%= request.getParameter("lectureCredit") %></td>
-					<td><%= request.getParameter("lectureTime") %></td>
-					<td><a href="/Class_Registration_System/professor.jsp?id=<%= request.getParameter("id") %>&name=<%= request.getParameter("name") %>">[ 삭제 ]</a></td>
+					<td><%= lectureNum%></td>
+					<td><%= lectureName%></td>
+					<td><%= professor%></td>
+					<td><%= credit%></td>
+					<td><%= time%></td>
+					<td><a href="/Class_Registration_System/removeClass.jsp?id=<%=request.getParameter("id")%>&name=<%=request.getParameter("name")%>&campus=<%=request.getParameter("campus")%>&college=<%=request.getParameter("college")%>&department=<%=request.getParameter("department")%>&lectureName=<%= lectureName_en%>&lineNum=<%= count%>">삭제</a></td>
 				</tr>
-				<% } %>
+				<%
+						}
+
+					} catch (FileNotFoundException e) {
+
+					}
+				%>
 			</tbody>
 		</table>
 		<br>
