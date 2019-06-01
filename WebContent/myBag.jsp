@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.io.*"%>
+<%@ page import="java.util.Scanner"%>
 <!DOCTYPE html>
 <html>
 
@@ -31,7 +33,7 @@
 			<small style="font-family:Sunflower;">명지대학교 수강신청 시스템</small>
 		</a>
 		<div class="text-right">
-			<a href="/Class_Registration_System/class.jsp?id=<%= request.getParameter("id") %>" class="btn btn-outline-primary btn-sm">강좌 선택</a>
+			<a href="/Class_Registration_System/class.jsp?id=<%= request.getParameter("id") %>&name=<%=request.getParameter("name")%>" class="btn btn-outline-primary btn-sm">강좌 선택</a>
 			<a href="/Class_Registration_System/logout.jsp" class="btn btn-outline-primary btn-sm">로그아웃</a>
 		</div>
 	</nav>
@@ -60,6 +62,45 @@
 			</thead>
 			<tbody>
 				<!-- Show Lectures -->
+				<%
+					try {
+						String lecturePath = application.getRealPath("/WEB-INF/data/user/" + request.getParameter("id")) + "/bag";
+						Scanner scanner = new Scanner(new File(lecturePath));
+						int count = 0;
+
+						while (scanner.hasNext()) {
+							count++;
+
+							String lectureNum = scanner.next();
+
+							String lectureName = scanner.next();
+							String lectureName_en = java.net.URLEncoder.encode(lectureName, "UTF-8");
+
+							String professor = scanner.next();
+							String professor_en = java.net.URLEncoder.encode(professor, "UTF-8");
+
+							String credit = scanner.next();
+							String credit_en = java.net.URLEncoder.encode(credit, "UTF-8");
+
+							String time = scanner.next();
+							String time_en = java.net.URLEncoder.encode(time, "UTF-8");
+				%>
+				<tr>
+					<td><%= lectureNum%></td>
+					<td><%= lectureName%></td>
+					<td><%= professor%></td>
+					<td><%= credit%></td>
+					<td><%= time%></td>
+					<td><a href="/Class_Registration_System/removeLecture.jsp?id=<%=request.getParameter("id")%>&name=<%=request.getParameter("name")%>&page=bag&lectureName=<%= lectureName_en%>&lineNum=<%= count%>">삭제</a></td>
+					<td><a href="/Class_Registration_System/addSincheong.jsp?id=<%=request.getParameter("id")%>&name=<%=request.getParameter("name")%>&page=myBag&lectureNum=<%= lectureNum%>&lectureName=<%= lectureName_en%>&professor=<%= professor_en%>&credit=<%= credit_en%>&time=<%= time_en%>">신청</a></td>
+				</tr>
+				<%
+						}
+
+					} catch (FileNotFoundException e) {
+
+					}
+				%>
 			</tbody>
 		</table>
 		<br>
@@ -78,12 +119,48 @@
 					<th>담당 교수</th>
 					<th>학점</th>
 					<th>강의 시간</th>
-					<th>담기</th>
 					<th>비고</th>
 				</tr>
 			</thead>
 			<tbody>
 				<!-- Show Lectures -->
+				<%
+					try {
+						String lecturePath = application.getRealPath("/WEB-INF/data/user/" + request.getParameter("id") + "/sincheong");
+						Scanner scanner = new Scanner(new File(lecturePath));
+						int count = 0;
+
+						while (scanner.hasNext()) {
+							count++;
+							String lectureNum = scanner.next();
+
+							String lectureName = scanner.next();
+							String lectureName_en = java.net.URLEncoder.encode(lectureName, "UTF-8");
+
+							String professor = scanner.next();
+							String professor_en = java.net.URLEncoder.encode(professor, "UTF-8");
+
+							String credit = scanner.next();
+							String credit_en = java.net.URLEncoder.encode(credit, "UTF-8");
+
+							String time = scanner.next();
+							String time_en = java.net.URLEncoder.encode(time, "UTF-8");
+				%>
+				<tr>
+					<td><%= lectureNum%></td>
+					<td><%= lectureName%></td>
+					<td><%= professor%></td>
+					<td><%= credit%></td>
+					<td><%= time%></td>
+					<td><a href="/Class_Registration_System/removeLecture.jsp?id=<%=request.getParameter("id")%>&name=<%=request.getParameter("name")%>&page=sincheong&lectureName=<%= lectureName_en%>&lineNum=<%= count%>">삭제</a></td>
+				</tr>
+				<%
+						}
+
+					} catch (FileNotFoundException e) {
+
+					}
+				%>
 			</tbody>
 		</table>
 		<br>
