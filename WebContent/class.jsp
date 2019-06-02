@@ -141,7 +141,7 @@
 					<td><%= professor%></td>
 					<td><%= credit%></td>
 					<td><%= time%></td>
-					<td><a href="/Class_Registration_System/addBag.jsp?id=<%=request.getParameter("id")%>&name=<%=request.getParameter("name")%>&campus=<%=request.getParameter("campus")%>&college=&lectureNum=<%=request.getParameter("college")%>&department=<%=request.getParameter("department")%>&lectureNum=<%= lectureNum%>&lectureName=<%= lectureName_en%>&professor=<%= professor_en%>&credit=<%= credit_en%>&time=<%= time_en%>">담기</a></td>
+					<td><a href="/Class_Registration_System/addBag.jsp?id=<%=request.getParameter("id")%>&name=<%=request.getParameter("name")%>&campus=<%=request.getParameter("campus")%>&college=<%=request.getParameter("college")%>&department=<%=request.getParameter("department")%>&lectureNum=<%= lectureNum%>&lectureName=<%= lectureName_en%>&professor=<%= professor_en%>&credit=<%= credit_en%>&time=<%= time_en%>">담기</a></td>
 					<td><a href="/Class_Registration_System/addSincheong.jsp?id=<%=request.getParameter("id")%>&name=<%=request.getParameter("name")%>&page=class&lectureNum=<%= lectureNum%>&lectureName=<%= lectureName_en%>&professor=<%= professor_en%>&credit=<%= credit_en%>&time=<%= time_en%>">신청</a></td>
 				</tr>
 				<%
