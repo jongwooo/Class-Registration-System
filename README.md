@@ -8,3 +8,5 @@ Class Registration System
 ---
 
 명지대학교 융합소프트웨어학부 전공 수업 중 프로젝트로, JSP 기반 수강 신청 프로그램입니다.
+
+[Demo][http://han980817.cafe24.com/login.jsp](http://han980817.cafe24.com/login.jsp)
