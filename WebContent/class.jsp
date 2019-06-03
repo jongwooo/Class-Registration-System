@@ -62,8 +62,13 @@
 			<small style="font-family: Sunflower;"><%=request.getParameter("name")%>
 				님, 반갑습니다!</small>
 		</p>
-		<div class="row pl-3">
-			<form class=""
+		<hr>
+	</div>
+
+	<div class="container">
+		<h5 class="lecture-list">강좌 검색</h5>
+		<div class="row">
+			<form class="text-center" style="margin: 0 auto;"
 				action="classView.jsp?id=<%=request.getParameter("id")%>&name=<%=request.getParameter("name")%>&page=class"
 				method="post">
 				<select name="campus" id="campus" onchange="campusChange()">
@@ -74,11 +79,12 @@
 					<option>분류 선택</option>
 				</select> <select name="department" id="department">
 					<option>분류 선택</option>
-				</select> <input type="submit" class="btn btn-primary btn-sm" value="선택">
+				</select> <input type="submit" class="btn btn-primary" value="선택">
 			</form>
 		</div>
 		<hr>
 	</div>
+
 	<div class="container">
 		<%
 			if (request.getParameter("campus") == null || request.getParameter("college") == null
