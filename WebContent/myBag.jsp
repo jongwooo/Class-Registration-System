@@ -28,81 +28,58 @@
 <body>
 	<!-- NavBar -->
 	<nav class="navbar navbar-light bg-light">
-		<a class="navbar-brand" href="/Class_Registration_System/class.jsp?id=<%= request.getParameter("id") %>&name=<%= request.getParameter("name") %>">
+		<a class="navbar-brand" href="class.do">
 			<img src="image/mju_logo.gif" alt="명지대 로고" width="30px" height="30px">
 			<small style="font-family:Sunflower;">명지대학교 수강신청 시스템</small>
 		</a>
 		<div class="text-right">
-			<a href="/Class_Registration_System/class.jsp?id=<%= request.getParameter("id") %>&name=<%=request.getParameter("name")%>" class="btn btn-outline-primary btn-sm">강좌 선택</a>
-			<a href="/Class_Registration_System/logout.jsp" class="btn btn-outline-primary btn-sm">로그아웃</a>
+			<a href="class.do" class="btn btn-outline-primary btn-sm">강좌 선택</a>
+			<a href="logout.do" class="btn btn-outline-primary btn-sm">로그아웃</a>
 		</div>
 	</nav>
 
   <!-- My Bag -->
   <div class="container">
 		<p class="text-right">
-			<small style="font-family:Sunflower;"><%= request.getParameter("name") %> 님, 반갑습니다!</small>
+			<small style="font-family:Sunflower;"><%= session.getAttribute("name") %> 님, 반갑습니다!</small>
 		</p>
 		<hr>
 	</div>
 	<!-- Basket -->
 	<div class="container">
 		<h5 class="lecture-list">담은 강좌 목록</h5>
+		<form method="post" name="bag">
+			<div class="text-right pb-2">
+				<input type="submit" class="btn btn-primary btn-sm" value="신청" onclick="javascript: bag.action='';">
+				<input type="submit" class="btn btn-danger btn-sm" value="삭제" onclick="javascript: bag.action='';">
+			</div>
 		<table>
 			<thead>
 				<tr>
+					<th>선택</th>
 					<th>강좌 번호</th>
 					<th>강좌명</th>
 					<th>담당 교수</th>
 					<th>학점</th>
 					<th>강의 시간</th>
-					<th>담기</th>
-					<th>비고</th>
 				</tr>
 			</thead>
 			<tbody>
 				<!-- Show Lectures -->
 				<%
-					try {
-						String lecturePath = application.getRealPath("/WEB-INF/data/user/" + request.getParameter("id")) + "/bag";
-						Scanner scanner = new Scanner(new File(lecturePath));
-						int count = 0;
-
-						while (scanner.hasNext()) {
-							count++;
-
-							String lectureNum = scanner.next();
-
-							String lectureName = scanner.next();
-							String lectureName_en = java.net.URLEncoder.encode(lectureName, "UTF-8");
-
-							String professor = scanner.next();
-							String professor_en = java.net.URLEncoder.encode(professor, "UTF-8");
-
-							String credit = scanner.next();
-							String credit_en = java.net.URLEncoder.encode(credit, "UTF-8");
-
-							String time = scanner.next();
-							String time_en = java.net.URLEncoder.encode(time, "UTF-8");
+					if (request.getParameter("basketTable") == null) {
 				%>
-				<tr>
-					<td><%= lectureNum%></td>
-					<td><%= lectureName%></td>
-					<td><%= professor%></td>
-					<td><%= credit%></td>
-					<td><%= time%></td>
-					<td><a href="/Class_Registration_System/removeLecture.jsp?id=<%=request.getParameter("id")%>&name=<%=request.getParameter("name")%>&page=bag&lectureName=<%= lectureName_en%>&lineNum=<%= count%>">삭제</a></td>
-					<td><a href="/Class_Registration_System/addSincheong.jsp?id=<%=request.getParameter("id")%>&name=<%=request.getParameter("name")%>&page=myBag&lectureNum=<%= lectureNum%>&lectureName=<%= lectureName_en%>&professor=<%= professor_en%>&credit=<%= credit_en%>&time=<%= time_en%>">신청</a></td>
-				</tr>
+
 				<%
-						}
-
-					} catch (FileNotFoundException e) {
-
+					} else {
+				%>
+					<%=request.getParameter("basketTable")%>
+				<%
 					}
 				%>
 			</tbody>
 		</table>
+		</form>
 		<br>
 		<br>
 		<hr>
@@ -111,58 +88,37 @@
 	<!-- Sincheong -->
 	<div class="container">
 		<h5 class="lecture-list">신청 강좌 목록</h5>
+		<form class="" action="" method="post">
+			<div class="text-right pb-2">
+				<input type="submit" class="btn btn-danger btn-sm" name="" value="삭제">
+			</div>
 		<table>
 			<thead>
 				<tr>
+					<th>선택</th>
 					<th>강좌 번호</th>
 					<th>강좌명</th>
 					<th>담당 교수</th>
 					<th>학점</th>
 					<th>강의 시간</th>
-					<th>비고</th>
 				</tr>
 			</thead>
 			<tbody>
 				<!-- Show Lectures -->
 				<%
-					try {
-						String lecturePath = application.getRealPath("/WEB-INF/data/user/" + request.getParameter("id") + "/sincheong");
-						Scanner scanner = new Scanner(new File(lecturePath));
-						int count = 0;
-
-						while (scanner.hasNext()) {
-							count++;
-							String lectureNum = scanner.next();
-
-							String lectureName = scanner.next();
-							String lectureName_en = java.net.URLEncoder.encode(lectureName, "UTF-8");
-
-							String professor = scanner.next();
-							String professor_en = java.net.URLEncoder.encode(professor, "UTF-8");
-
-							String credit = scanner.next();
-							String credit_en = java.net.URLEncoder.encode(credit, "UTF-8");
-
-							String time = scanner.next();
-							String time_en = java.net.URLEncoder.encode(time, "UTF-8");
+					if (request.getParameter("sincheongTable") == null) {
 				%>
-				<tr>
-					<td><%= lectureNum%></td>
-					<td><%= lectureName%></td>
-					<td><%= professor%></td>
-					<td><%= credit%></td>
-					<td><%= time%></td>
-					<td><a href="/Class_Registration_System/removeLecture.jsp?id=<%=request.getParameter("id")%>&name=<%=request.getParameter("name")%>&page=sincheong&lectureName=<%= lectureName_en%>&lineNum=<%= count%>">삭제</a></td>
-				</tr>
+
 				<%
-						}
-
-					} catch (FileNotFoundException e) {
-
+					} else {
+				%>
+					<%=request.getParameter("sincheongTable")%>
+				<%
 					}
 				%>
 			</tbody>
 		</table>
+		</form>
 		<br>
 		<br>
 		<hr>

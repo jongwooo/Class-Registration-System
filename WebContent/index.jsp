@@ -24,7 +24,7 @@
 <body>
 	<!-- NavBar -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="/Class_Registration_System/login.jsp">
+		<a class="navbar-brand" href="index.do">
 			<img src="image/mju_logo.gif" alt="명지대 로고" width="30px" height="30px">
 			<small style="font-family: Sunflower;">명지대학교 수강신청 시스템</small>
 		</a>
@@ -49,9 +49,11 @@
 				</div>
 				<% } %>
 
-				<form class="pt-3 pl-5 pr-5 pb-5" action="authentication.jsp" method="post">
+				<form class="pt-3 pl-5 pr-5 pb-5" action="login.do"  method="post">
 					<label for="userId" style="font-family: Questrial;">UserId</label>
-					<input type="text" name="userId" id="userId" placeholder="아이디" class="form-control"> <label for="password" style="font-family: Questrial;">Password</label> <input type="password" name="password" id="password" placeholder="비밀번호"
+					<input type="text" name="userId" id="userId" placeholder="아이디" class="form-control"> 
+					<label for="password" style="font-family: Questrial;">Password</label> 
+					<input type="password" name="password" id="password" placeholder="비밀번호"
 						class="form-control"> <br>
 					<div class="button">
 						<button type="submit" class="hover-button">
