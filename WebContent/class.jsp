@@ -105,8 +105,8 @@
 	<div class="container">
 		<form method="post" name="lecture">
 			<div class="text-right pb-2">
-				<input type="submit" class="btn btn-info btn-sm" value="담기" onclick="javascript: lecture.action='';">
-				<input type="submit" class="btn btn-primary btn-sm" value="신청" onclick="javascript: lecture.action='';">
+				<input type="submit" class="btn btn-info btn-sm" value="담기" onclick="javascript: lecture.action='addBag.do';">
+				<input type="submit" class="btn btn-primary btn-sm" value="신청" onclick="javascript: lecture.action='addSincheong.do';">
 			</div>
 			<table>
 				<thead>
