@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,11 +34,23 @@ public class AddLectureCommand implements Command {
 			}
 
 			try {
-				FileWriter fw = new FileWriter(file + "/" + addMode, true);
-				for(int i = 0; i < selectedLectureList.size();i++) {
-					fw.write(selectedLectureList.get(i) + "\n");
+				Scanner scanner = new Scanner(new File(addPath + "/" + addMode));
+				while (scanner.hasNextLine()) {
+					String line = scanner.nextLine();
+					for(int i = 0;i < selectedLectureList.size();i++) {
+						if(line.equals(selectedLectureList.get(i))) {
+							selectedLectureList.remove(i);
+						}
+					}
 				}
-				fw.close();
+
+				if(selectedLectureList.size() > 0) {
+					FileWriter fw = new FileWriter(file + "/" + addMode, true);
+					for(int j = 0; j < selectedLectureList.size();j++) {
+						fw.write(selectedLectureList.get(j) + "\n");
+					}
+					fw.close();
+				}
 			} catch (FileNotFoundException e) {
 				try {
 					FileWriter fw = new FileWriter(file + "/" + addMode);
