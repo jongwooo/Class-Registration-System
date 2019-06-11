@@ -50,8 +50,8 @@
 		<h5 class="lecture-list">담은 강좌 목록</h5>
 		<form method="post" name="bag">
 			<div class="text-right pb-2">
-				<input type="submit" class="btn btn-primary btn-sm" value="신청" onclick="javascript: bag.action='';">
-				<input type="submit" class="btn btn-danger btn-sm" value="삭제" onclick="javascript: bag.action='';">
+				<input type="submit" class="btn btn-primary btn-sm" value="신청" onclick="javascript: bag.action='addMySincheong.do';">
+				<input type="submit" class="btn btn-danger btn-sm" value="삭제" onclick="javascript: bag.action='removeBag.do';">
 			</div>
 		<table>
 			<thead>
@@ -88,9 +88,9 @@
 	<!-- Sincheong -->
 	<div class="container">
 		<h5 class="lecture-list">신청 강좌 목록</h5>
-		<form class="" action="" method="post">
+		<form action="removeSincheong.do" method="post">
 			<div class="text-right pb-2">
-				<input type="submit" class="btn btn-danger btn-sm" name="" value="삭제">
+				<input type="submit" class="btn btn-danger btn-sm" value="삭제">
 			</div>
 		<table>
 			<thead>

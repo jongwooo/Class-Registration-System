@@ -16,6 +16,7 @@ import command.LoginCommand;
 import command.LogoutCommand;
 import command.MyBagCommand;
 import command.MySincheongCommand;
+import command.RemoveLectureCommand;
 
 
 /**
@@ -26,6 +27,7 @@ public class FrontControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static String lectureMode;
 	public static String addMode;
+	public static String removeMode;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -99,6 +101,21 @@ public class FrontControl extends HttpServlet {
 			command = new AddLectureCommand();
 			command.execute(request, response);
 			viewPage = "/class.jsp";
+		} else if(com.equals("/addMySincheong.do")) {
+			addMode = "sincheong";
+			command = new AddLectureCommand();
+			command.execute(request, response);
+			viewPage = "/myBag.do";
+		} else if(com.equals("/removeBag.do")) {
+			removeMode = "bag";
+			command = new RemoveLectureCommand();
+			command.execute(request, response);
+			viewPage = "/myBag.do";
+		} else if(com.equals("/removeSincheong.do")) {
+			removeMode = "sincheong";
+			command = new RemoveLectureCommand();
+			command.execute(request, response);
+			viewPage = "/myBag.do";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

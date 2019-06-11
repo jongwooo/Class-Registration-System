@@ -29,14 +29,16 @@ public class MyBagCommand implements Command {
 			String basketTable = "";
 			
 			for(index = 0;index < items.size();index++) {
+				String selectedLecture = items.get(index).getLectureNum() + " " + items.get(index).getLectureName() + " " 
+					+ items.get(index).getProfessor() + " " + items.get(index).getCredit() + " " + items.get(index).getTime();
 				basketTable += "<tr>\n" +
-						"  <td><input type=\'checkbox\' name=\'selectedMyBags\' value=\'" + items.get(index).getLectureNum() + "\'></td>\n" +
+						"  <td><input type=\'checkbox\' name=\'selectedLectures\' value=\'" + selectedLecture + "\'></td>\n" +
 						"  <td>" + items.get(index).getLectureNum() + "</td>\n" +
 						"  <td>" + items.get(index).getLectureName() + "</td>\n" +
 						"  <td>" + items.get(index).getProfessor() + "</td>\n" +
 						"  <td>" + items.get(index).getCredit() + "</td>\n" +
 						"  <td>" + items.get(index).getTime() + "</td>\n" +
-						"</tr>";
+						"</tr>\n";
 			}
 			viewPage = "/myBag.jsp?basketTable=" + basketTable;
 		} catch (FileNotFoundException e) {

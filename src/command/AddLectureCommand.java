@@ -4,44 +4,53 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import static control.FrontControl.addMode;
 
 public class AddLectureCommand implements Command {
-	
+
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
+
 		String[] selectedLectures = request.getParameterValues("selectedLectures");
-		String userID = (String)request.getSession().getAttribute("id");
-		String basketPath = request.getSession().getServletContext().getRealPath("/") + "WEB-INF/data/user/" + userID;
-		
-		File f = new File(basketPath);
-		
-		if (!f.exists()) {
-			f.mkdir();
-		}
-		
-		try {
-			FileWriter fw = new FileWriter(f + "/" + addMode, true);
-			for(int i = 0; i < selectedLectures.length;i++) {
-				fw.write(selectedLectures[i] + "\n");
+		if(selectedLectures != null) {
+			final ArrayList<String> selectedLectureList = new ArrayList<String>(); 
+			Collections.addAll(selectedLectureList, selectedLectures);
+
+			String userID = (String)request.getSession().getAttribute("id");
+			String addPath = request.getSession().getServletContext().getRealPath("/") + "WEB-INF/data/user/" + userID;
+
+			File file = new File(addPath);
+
+			if (!file.exists()) {
+				file.mkdir();
 			}
-			fw.close();
-		} catch (FileNotFoundException e) {
+
 			try {
-				FileWriter fw = new FileWriter(f + "/" + addMode);
-				for(int i = 0; i < selectedLectures.length;i++) {
-					fw.write(selectedLectures[i] + "\n");
+				FileWriter fw = new FileWriter(file + "/" + addMode, true);
+				for(int i = 0; i < selectedLectureList.size();i++) {
+					fw.write(selectedLectureList.get(i) + "\n");
 				}
 				fw.close();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
+			} catch (FileNotFoundException e) {
+				try {
+					FileWriter fw = new FileWriter(file + "/" + addMode);
+					for(int i = 0; i < selectedLectureList.size();i++) {
+						fw.write(selectedLectureList.get(i) + "\n");
+					}
+					fw.close();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+				}
+			} catch (IOException e) {
+
 			}
-		} catch (IOException e) {
-			
 		}
 	}
 }

@@ -57,8 +57,7 @@
 	<!-- Select Class -->
 	<div class="container">
 		<p class="text-right">
-			<small style="font-family: Sunflower;"><%= session.getAttribute("name") %>
-				님, 반갑습니다!</small>
+			<small style="font-family: Sunflower;"><%= session.getAttribute("name") %> 님, 반갑습니다!</small>
 		</p>
 		<hr>
 	</div>
@@ -76,7 +75,8 @@
 					<option>분류 선택</option>
 				</select> <select name="department" id="department">
 					<option>분류 선택</option>
-				</select> <input type="submit" class="btn btn-primary" value="선택">
+				</select> 
+				<input type="submit" class="btn btn-primary btn-sm" value="선택">
 			</form>
 		</div>
 		<hr>
@@ -135,6 +135,9 @@
 				</tbody>
 			</table>
 		</form>
+		<br>
+		<br>
+		<hr>
 	</div>
 	<!-- JS Files -->
 	<script type="text/javascript" src="class.js"></script>
