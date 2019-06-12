@@ -10,5 +10,4 @@ public class LogoutCommand implements Command {
 		// TODO Auto-generated method stub
 		request.getSession().invalidate();
 	}
-
 }

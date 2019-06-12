@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.io.*"%>
-<%@ page import="java.util.Scanner"%>
+<%@page import="java.util.Vector"%>
+<%@page import = "entity.ELecture" %>
 <!DOCTYPE html>
 <html>
 
@@ -66,17 +66,26 @@
 			</thead>
 			<tbody>
 				<!-- Show Lectures -->
-				<%
-					if (request.getParameter("basketTable") == null) {
+				<% if(request.getAttribute("myBag") != null) {
+					Object myBags = request.getAttribute("myBag");
+					Vector<ELecture> bItems = (Vector<ELecture>)myBags;
+					for(int index = 0;index < bItems.size();index++){
+						String bValue = bItems.get(index).getLectureNum() + " " + bItems.get(index).getLectureName()
+								+ " " + bItems.get(index).getProfessor() + " " + bItems.get(index).getCredit() + " " + bItems.get(index).getTime();
 				%>
-
-				<%
-					} else {
-				%>
-					<%=request.getParameter("basketTable")%>
+					<tr>
+						<td><input type="checkbox" name="selectedLectures" value="<%= bValue %>"></td>
+						<td><%= bItems.get(index).getLectureNum() %></td>
+						<td><%= bItems.get(index).getLectureName() %></td>
+						<td><%= bItems.get(index).getProfessor() %></td>
+						<td><%= bItems.get(index).getCredit() %></td>
+						<td><%= bItems.get(index).getTime() %></td>
+					</tr>
 				<%
 					}
-				%>
+				 } else {
+
+				 }%>
 			</tbody>
 		</table>
 		</form>
@@ -105,17 +114,26 @@
 			</thead>
 			<tbody>
 				<!-- Show Lectures -->
-				<%
-					if (request.getParameter("sincheongTable") == null) {
+				<% if(request.getAttribute("sincheong") != null) {
+					Object sincheongs = request.getAttribute("sincheong");
+					Vector<ELecture> sItems = (Vector<ELecture>)sincheongs;
+					for(int index = 0;index < sItems.size();index++){
+						String sValue = sItems.get(index).getLectureNum() + " " + sItems.get(index).getLectureName()
+								+ " " + sItems.get(index).getProfessor() + " " + sItems.get(index).getCredit() + " " + sItems.get(index).getTime();
 				%>
-
-				<%
-					} else {
-				%>
-					<%=request.getParameter("sincheongTable")%>
+					<tr>
+						<td><input type="checkbox" name="selectedLectures" value="<%= sValue %>"></td>
+						<td><%= sItems.get(index).getLectureNum() %></td>
+						<td><%= sItems.get(index).getLectureName() %></td>
+						<td><%= sItems.get(index).getProfessor() %></td>
+						<td><%= sItems.get(index).getCredit() %></td>
+						<td><%= sItems.get(index).getTime() %></td>
+				  </tr>
 				<%
 					}
-				%>
+				 } else {
+
+				 }%>
 			</tbody>
 		</table>
 		</form>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
+<%@page import="java.util.Vector"%>
+<%@page import = "entity.ELecture" %>
 <!DOCTYPE html>
 <html>
 
@@ -75,7 +75,7 @@
 					<option>분류 선택</option>
 				</select> <select name="department" id="department">
 					<option>분류 선택</option>
-				</select> 
+				</select>
 				<input type="submit" class="btn btn-primary btn-sm" value="선택">
 			</form>
 		</div>
@@ -121,17 +121,26 @@
 				</thead>
 				<tbody>
 				<!-- Show Lectures -->
-				<%
-					if (request.getParameter("lectureTable") == null) {
+				<% if(request.getAttribute("lectures") != null) {
+					Object lectures = request.getAttribute("lectures");
+					Vector<ELecture> items = (Vector<ELecture>)lectures;
+					for(int index = 0;index < items.size();index++){
+						String value = items.get(index).getLectureNum() + " " + items.get(index).getLectureName()
+								+ " " + items.get(index).getProfessor() + " " + items.get(index).getCredit() + " " + items.get(index).getTime();
 				%>
-
-				<%
-					} else {
-				%>
-					<%=request.getParameter("lectureTable")%>
+					<tr>
+						<td><input type="checkbox" name="selectedLectures" value="<%= value %>"></td>
+						<td><%= items.get(index).getLectureNum() %></td>
+						<td><%= items.get(index).getLectureName() %></td>
+						<td><%= items.get(index).getProfessor() %></td>
+						<td><%= items.get(index).getCredit() %></td>
+						<td><%= items.get(index).getTime() %></td>
+					</tr>
 				<%
 					}
-				%>
+				 } else {
+
+				 }%>
 				</tbody>
 			</table>
 		</form>

@@ -89,7 +89,7 @@ public class FrontControl extends HttpServlet {
 			lectureMode = "lecture";
 			command = new LectureCommand();
 			command.execute(request, response);
-			viewPage = LectureCommand.viewPage;
+			viewPage = "/class.jsp";
 		} else if(com.equals("/myBag.do")) {
 			lectureMode = "myBag";
 			command = new MyBagCommand();
@@ -97,7 +97,7 @@ public class FrontControl extends HttpServlet {
 			lectureMode = "sincheong";
 			command = new MySincheongCommand();
 			command.execute(request, response);
-			viewPage = MyBagCommand.viewPage + MySincheongCommand.viewPage;
+			viewPage = "/myBag.jsp";
 		} else if(com.equals("/addBag.do")) {
 			addMode = "bag";
 			command = new AddLectureCommand();
@@ -112,6 +112,9 @@ public class FrontControl extends HttpServlet {
 			addMode = "sincheong";
 			command = new AddLectureCommand();
 			command.execute(request, response);
+			removeMode = "bag";
+			command = new RemoveLectureCommand();
+			command.execute(request, response);
 			viewPage = "/myBag.do";
 		} else if(com.equals("/removeBag.do")) {
 			removeMode = "bag";
@@ -121,6 +124,9 @@ public class FrontControl extends HttpServlet {
 		} else if(com.equals("/removeSincheong.do")) {
 			removeMode = "sincheong";
 			command = new RemoveLectureCommand();
+			command.execute(request, response);
+			addMode = "bag";
+			command = new AddLectureCommand();
 			command.execute(request, response);
 			viewPage = "/myBag.do";
 		}

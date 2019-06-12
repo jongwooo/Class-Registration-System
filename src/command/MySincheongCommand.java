@@ -25,25 +25,9 @@ public class MySincheongCommand implements Command {
 		try {
 			Vector<ELecture> items;
 			items = this.dAOMySincheong.getItems();
-			int index;
-			String sincheongTable = "";
-			
-			for(index = 0;index < items.size();index++) {
-				String selectedLecture = items.get(index).getLectureNum() + " " + items.get(index).getLectureName() + " " 
-						+ items.get(index).getProfessor() + " " + items.get(index).getCredit() + " " + items.get(index).getTime();
-				sincheongTable += "<tr>\n" +
-						"  <td><input type=\'checkbox\' name=\'selectedLectures\' value=\'" + selectedLecture + "\'></td>\n" +
-						"  <td>" + items.get(index).getLectureNum() + "</td>\n" +
-						"  <td>" + items.get(index).getLectureName() + "</td>\n" +
-						"  <td>" + items.get(index).getProfessor() + "</td>\n" +
-						"  <td>" + items.get(index).getCredit() + "</td>\n" +
-						"  <td>" + items.get(index).getTime() + "</td>\n" +
-						"</tr>\n";
-			}
-			viewPage = "&sincheongTable=" + sincheongTable;
+			request.setAttribute("sincheong", items);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			viewPage = "&sincheongTable=";
 		}
 	}
 }
