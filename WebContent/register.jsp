@@ -65,7 +65,7 @@
 					</p>
 				</div>
 				<% } %>
-				<form class="pt-3 pl-5 pr-5 pb-5" action="register.do"  method="post">
+				<form class="pt-3 pl-5 pr-5 pb-3" action="register.do"  method="post">
 					<label for="registerName" style="font-family: Questrial;">UserName</label>
 					<input type="text" name="registerName" id="registerName" placeholder="이름" class="form-control">
 					<label for="registerID" style="font-family: Questrial;">UserId</label>
@@ -81,7 +81,8 @@
 						</button>
 					</div>
 				</form>
-
+				<p class="text-center pb-4"><a href="index.jsp" style="color:gray;">로그인</a> | <a href="iforgot.jsp" style="color:gray;">비밀번호찾기</a></p>
+				
 			</div>
 		</div>
 	</div>

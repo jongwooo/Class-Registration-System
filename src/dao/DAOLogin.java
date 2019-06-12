@@ -8,6 +8,7 @@ import java.util.Vector;
 import entity.ELogin;
 import static command.LoginCommand.loginPath;
 import static command.RegisterCommand.rootPath;
+import static command.IForgotCommand.iForgotPath;
 import static control.FrontControl.userMode;
 
 public class DAOLogin {
@@ -19,6 +20,8 @@ public class DAOLogin {
 			userPath = loginPath;
 		} else if(userMode.equals("register")) {
 			userPath = rootPath;
+		} else if(userMode.equals("iforgot")) {
+			userPath = iForgotPath;
 		}
 		Scanner scanner = new Scanner(new File(userPath + "WEB-INF/data/user/login"));
 	

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import command.LectureCommand;
 import command.AddLectureCommand;
 import command.Command;
+import command.IForgotCommand;
 import command.LoginCommand;
 import command.LogoutCommand;
 import command.MyBagCommand;
@@ -74,6 +75,11 @@ public class FrontControl extends HttpServlet {
 			command = new RegisterCommand();
 			command.execute(request, response);
 			viewPage = RegisterCommand.viewPage;
+		} else if(com.equals("/iforgot.do")) {
+			userMode = "iforgot";
+			command = new IForgotCommand();
+			command.execute(request, response);
+			viewPage = IForgotCommand.viewPage;
 		} else if(com.equals("/login.do")) {
 			userMode = "login";
 			command = new LoginCommand();
