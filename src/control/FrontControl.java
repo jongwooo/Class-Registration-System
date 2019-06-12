@@ -16,6 +16,7 @@ import command.LoginCommand;
 import command.LogoutCommand;
 import command.MyBagCommand;
 import command.MySincheongCommand;
+import command.RegisterCommand;
 import command.RemoveLectureCommand;
 
 
@@ -68,6 +69,10 @@ public class FrontControl extends HttpServlet {
 		
 		if(com.equals("/index.do")) {
 			viewPage = "/index.jsp";
+		} else if(com.equals("/register.do")) {
+			command = new RegisterCommand();
+			command.execute(request, response);
+			viewPage = RegisterCommand.viewPage;
 		} else if(com.equals("/login.do")) {
 			command = new LoginCommand();
 			command.execute(request, response);

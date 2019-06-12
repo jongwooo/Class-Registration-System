@@ -35,42 +35,44 @@
 		<div class="col-md-6 center-align">
 			<div class="card bg-white">
 				<br>
-				<% if (request.getParameter("status") == null) { %>
-				<h1 class="text-center" style="font-family: Questrial;">Login</h1>
-				<% } else if(request.getParameter("status").equals("registerOK")) { %>
-				<h1 class="text-center" style="font-family: Questrial;">Login</h1>
-				<div class="alert alert-success" role="alert">
-					<p style="font-family: Questrial; margin-bottom: 0; text-align: center;">회원가입이 정상적으로 처리되었습니다
+				<% if (request.getParameter("error") == null) { %>
+				<h1 class="text-center" style="font-family: Questrial;">Register</h1>
+				<% } else if(request.getParameter("error").equals("register-failed")) { %>
+				<h1 class="text-center" style="font-family: Questrial;">Register</h1>
+				<div class="alert alert-danger" role="alert">
+					<p style="font-family: Questrial; margin-bottom: 0; text-align: center;">폼을 전부 입력해 주세요
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</p>
 				</div>
-				<% } else if(request.getParameter("status").equals("login-failed")) { %>
-				<h1 class="text-center" style="font-family: Questrial;">Login</h1>
+				<% } else if(request.getParameter("error").equals("password-failed")) { %>
+				<h1 class="text-center" style="font-family: Questrial;">Register</h1>
 				<div class="alert alert-danger" role="alert">
-					<p style="font-family: Questrial; margin-bottom: 0; text-align: center;">아이디와
-						비밀번호를 확인해주세요
+					<p style="font-family: Questrial; margin-bottom: 0; text-align: center;">비밀번호를 확인해 주세요
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</p>
 				</div>
 				<% } %>
-
-				<form class="pt-3 pl-5 pr-5 pb-3" action="login.do"  method="post">
-					<label for="userId" style="font-family: Questrial;">UserId</label>
-					<input type="text" name="userId" id="userId" placeholder="아이디" class="form-control"> 
-					<label for="password" style="font-family: Questrial;">Password</label> 
-					<input type="password" name="password" id="password" placeholder="비밀번호"
-						class="form-control"> <br>
+				<form class="pt-3 pl-5 pr-5 pb-5" action="register.do"  method="post">
+					<label for="registerName" style="font-family: Questrial;">UserName</label>
+					<input type="text" name="registerName" id="registerName" placeholder="이름" class="form-control">
+					<label for="registerID" style="font-family: Questrial;">UserId</label>
+					<input type="text" name="registerID" id="registerID" placeholder="아이디" class="form-control"> 
+					<label for="registerPW" style="font-family: Questrial;">Password</label> 
+					<input type="password" name="registerPW" id="registerPW" placeholder="비밀번호" class="form-control">
+					<label for="confirmPW" style="font-family: Questrial;">Confirm Password</label> 
+					<input type="password" name="confirmPW" id="confirmPW" placeholder="비밀번호 확인" class="form-control">
+					<br>
 					<div class="button">
 						<button type="submit" class="hover-button">
-							<span>로그인</span>
+							<span>회원가입</span>
 						</button>
 					</div>
 				</form>
-				<a href="register.jsp" class="text-center pb-4" style="color:gray;">회원가입</a>
+
 			</div>
 		</div>
 	</div>

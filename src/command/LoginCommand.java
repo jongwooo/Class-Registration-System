@@ -26,7 +26,7 @@ public class LoginCommand implements Command {
 			items = this.dAOLogin.getItems();
 			String id = request.getParameter("userId");
 			String pw = request.getParameter("password");
-			viewPage = "index.jsp?error=login-failed";
+			viewPage = "index.jsp?status=login-failed";
 			int index = 0;
 			boolean found = false;
 			for(index = 0;index < items.size() && !found;index++) {
