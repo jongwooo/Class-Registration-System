@@ -6,13 +6,21 @@ import java.util.Scanner;
 import java.util.Vector;
 
 import entity.ELogin;
-import static command.LoginCommand.rootPath;
+import static command.LoginCommand.loginPath;
+import static command.RegisterCommand.rootPath;
+import static control.FrontControl.userMode;
 
 public class DAOLogin {
 	
 	public Vector<ELogin> getItems() throws FileNotFoundException {
 		Vector<ELogin> eItems = new Vector<ELogin>();
-		Scanner scanner = new Scanner(new File(rootPath + "WEB-INF/data/user/login"));
+		String userPath = null;
+		if(userMode.equals("login")) {
+			userPath = loginPath;
+		} else if(userMode.equals("register")) {
+			userPath = rootPath;
+		}
+		Scanner scanner = new Scanner(new File(userPath + "WEB-INF/data/user/login"));
 	
 		while(scanner.hasNext()) {
 			ELogin eItem = new ELogin();

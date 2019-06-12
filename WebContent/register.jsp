@@ -46,6 +46,15 @@
 						</button>
 					</p>
 				</div>
+				<% } else if(request.getParameter("error").equals("exist-failed")) { %>
+				<h1 class="text-center" style="font-family: Questrial;">Register</h1>
+				<div class="alert alert-danger" role="alert">
+					<p style="font-family: Questrial; margin-bottom: 0; text-align: center;">동일한 아이디가 존재합니다
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</p>
+				</div>
 				<% } else if(request.getParameter("error").equals("password-failed")) { %>
 				<h1 class="text-center" style="font-family: Questrial;">Register</h1>
 				<div class="alert alert-danger" role="alert">

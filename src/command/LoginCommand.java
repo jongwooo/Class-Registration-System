@@ -13,14 +13,14 @@ public class LoginCommand implements Command {
 
 	public static String viewPage;
 	private DAOLogin dAOLogin;
-	public static String rootPath;
+	public static String loginPath;
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		this.dAOLogin = new DAOLogin();
 
-		rootPath = request.getSession().getServletContext().getRealPath("/");
+		loginPath = request.getSession().getServletContext().getRealPath("/");
 		try {
 			Vector<ELogin> items;
 			items = this.dAOLogin.getItems();

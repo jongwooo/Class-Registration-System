@@ -29,6 +29,7 @@ public class FrontControl extends HttpServlet {
 	public static String lectureMode;
 	public static String addMode;
 	public static String removeMode;
+	public static String userMode;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -62,7 +63,6 @@ public class FrontControl extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String viewPage = null;
 		Command command = null;
-		lectureMode = null;
 		String uri = request.getRequestURI();
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
@@ -70,10 +70,12 @@ public class FrontControl extends HttpServlet {
 		if(com.equals("/index.do")) {
 			viewPage = "/index.jsp";
 		} else if(com.equals("/register.do")) {
+			userMode = "register";
 			command = new RegisterCommand();
 			command.execute(request, response);
 			viewPage = RegisterCommand.viewPage;
 		} else if(com.equals("/login.do")) {
+			userMode = "login";
 			command = new LoginCommand();
 			command.execute(request, response);
 			viewPage = LoginCommand.viewPage;
