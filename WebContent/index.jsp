@@ -35,10 +35,10 @@
 		<div class="col-md-6 center-align">
 			<div class="card bg-white">
 				<br>
+				<h1 class="text-center" style="font-family: Questrial;">Login</h1>
 				<% if (request.getParameter("status") == null) { %>
-				<h1 class="text-center" style="font-family: Questrial;">Login</h1>
-				<% } else if(request.getParameter("status").equals("registerOK")) { %>
-				<h1 class="text-center" style="font-family: Questrial;">Login</h1>
+				
+				<% } else if(request.getParameter("status").equals("s")) { %>
 				<div class="alert alert-success" role="alert">
 					<p style="font-family: Questrial; margin-bottom: 0; text-align: center;">회원가입이 정상적으로 처리되었습니다
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -47,10 +47,8 @@
 					</p>
 				</div>
 				<% } else if(request.getParameter("status").equals("login-failed")) { %>
-				<h1 class="text-center" style="font-family: Questrial;">Login</h1>
 				<div class="alert alert-danger" role="alert">
-					<p style="font-family: Questrial; margin-bottom: 0; text-align: center;">아이디와
-						비밀번호를 확인해주세요
+					<p style="font-family: Questrial; margin-bottom: 0; text-align: center;">아이디와 비밀번호를 확인해주세요
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>

@@ -35,10 +35,10 @@
 		<div class="col-md-6 center-align">
 			<div class="card bg-white">
 				<br>
+				<h1 class="text-center" style="font-family: Questrial;">Register</h1>
 				<% if (request.getParameter("error") == null) { %>
-				<h1 class="text-center" style="font-family: Questrial;">Register</h1>
+				
 				<% } else if(request.getParameter("error").equals("register-failed")) { %>
-				<h1 class="text-center" style="font-family: Questrial;">Register</h1>
 				<div class="alert alert-danger" role="alert">
 					<p style="font-family: Questrial; margin-bottom: 0; text-align: center;">폼을 전부 입력해 주세요
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -47,7 +47,6 @@
 					</p>
 				</div>
 				<% } else if(request.getParameter("error").equals("exist-failed")) { %>
-				<h1 class="text-center" style="font-family: Questrial;">Register</h1>
 				<div class="alert alert-danger" role="alert">
 					<p style="font-family: Questrial; margin-bottom: 0; text-align: center;">동일한 아이디가 존재합니다
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -56,7 +55,6 @@
 					</p>
 				</div>
 				<% } else if(request.getParameter("error").equals("password-failed")) { %>
-				<h1 class="text-center" style="font-family: Questrial;">Register</h1>
 				<div class="alert alert-danger" role="alert">
 					<p style="font-family: Questrial; margin-bottom: 0; text-align: center;">비밀번호를 확인해 주세요
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
