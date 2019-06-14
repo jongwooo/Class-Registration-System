@@ -23,6 +23,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Questrial|Sunflower:300" rel="stylesheet">
 	<!--Jquery CDN-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- JS Files -->
+	<script type="text/javascript" src="selectAll.js"></script>
 </head>
 
 <body>
@@ -56,7 +58,7 @@
 		<table>
 			<thead>
 				<tr>
-					<th>선택</th>
+					<th><input type="checkbox" name="bag-all" class="bag-all"></th>
 					<th>강좌 번호</th>
 					<th>강좌명</th>
 					<th>담당 교수</th>
@@ -74,7 +76,7 @@
 								+ " " + bItems.get(index).getProfessor() + " " + bItems.get(index).getCredit() + " " + bItems.get(index).getTime();
 				%>
 					<tr>
-						<td><input type="checkbox" name="selectedLectures" value="<%= bValue %>"></td>
+						<td><input type="checkbox" name="selectedLectures" value="<%= bValue %>" class="bag"></td>
 						<td><%= bItems.get(index).getLectureNum() %></td>
 						<td><%= bItems.get(index).getLectureName() %></td>
 						<td><%= bItems.get(index).getProfessor() %></td>
@@ -104,7 +106,7 @@
 		<table>
 			<thead>
 				<tr>
-					<th>선택</th>
+					<th><input type="checkbox" name="sincheong-all" class="sincheong-all"></th>
 					<th>강좌 번호</th>
 					<th>강좌명</th>
 					<th>담당 교수</th>
@@ -122,7 +124,7 @@
 								+ " " + sItems.get(index).getProfessor() + " " + sItems.get(index).getCredit() + " " + sItems.get(index).getTime();
 				%>
 					<tr>
-						<td><input type="checkbox" name="selectedLectures" value="<%= sValue %>"></td>
+						<td><input type="checkbox" name="selectedLectures" value="<%= sValue %>" class="sincheong"></td>
 						<td><%= sItems.get(index).getLectureNum() %></td>
 						<td><%= sItems.get(index).getLectureName() %></td>
 						<td><%= sItems.get(index).getProfessor() %></td>
