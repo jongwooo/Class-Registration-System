@@ -38,7 +38,7 @@
 				<h1 class="text-center" style="font-family: Questrial;">Login</h1>
 				<% if (request.getParameter("status") == null) { %>
 				
-				<% } else if(request.getParameter("status").equals("s")) { %>
+				<% } else if(request.getParameter("status").equals("registerOK")) { %>
 				<div class="alert alert-success" role="alert">
 					<p style="font-family: Questrial; margin-bottom: 0; text-align: center;">회원가입이 정상적으로 처리되었습니다
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
