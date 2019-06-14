@@ -31,6 +31,7 @@ public class FrontControl extends HttpServlet {
 	public static String addMode;
 	public static String removeMode;
 	public static String userMode;
+	public static boolean doPostMode;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -45,6 +46,7 @@ public class FrontControl extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doPostMode = false; 
 		actionDo(request, response);
 	}
 
@@ -53,6 +55,7 @@ public class FrontControl extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doPostMode = true; 
 		actionDo(request, response);
 	}
 	
@@ -67,19 +70,26 @@ public class FrontControl extends HttpServlet {
 		String uri = request.getRequestURI();
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
+		String user = (String)request.getSession().getAttribute("id");
 		
 		if(com.equals("/index.do")) {
 			viewPage = "/index.jsp";
-		} else if(com.equals("/register.do")) {
+		} else if(com.equals("/register.do") && doPostMode) {
 			userMode = "register";
 			command = new RegisterCommand();
 			command.execute(request, response);
 			viewPage = RegisterCommand.viewPage;
-		} else if(com.equals("/iforgot.do")) {
+		} else if(com.equals("/register.do")) {
+			viewPage = "/register.jsp";
+		} else if(com.equals("/iforgot.do") && doPostMode) {
 			userMode = "iforgot";
 			command = new IForgotCommand();
 			command.execute(request, response);
 			viewPage = IForgotCommand.viewPage;
+		} else if(com.equals("/iforgot.do")) {
+			viewPage = "/iforgot.jsp";
+		} else if(com.equals("/login.do") && user != null) {
+			viewPage = "class.jsp";
 		} else if(com.equals("/login.do")) {
 			userMode = "login";
 			command = new LoginCommand();
@@ -89,14 +99,14 @@ public class FrontControl extends HttpServlet {
 			command = new LogoutCommand();
 			command.execute(request, response);
 			viewPage = "/index.jsp";
-		} else if(com.equals("/class.do")) {
+		} else if(com.equals("/class.do") && user != null) {
 			viewPage = "/class.jsp";
-		} else if(com.equals("/lecture.do")) {
+		} else if(com.equals("/lecture.do") && user != null) {
 			lectureMode = "lecture";
 			command = new LectureCommand();
 			command.execute(request, response);
 			viewPage = "/class.jsp";
-		} else if(com.equals("/myBag.do")) {
+		} else if(com.equals("/myBag.do") && user != null) {
 			lectureMode = "myBag";
 			command = new MyBagCommand();
 			command.execute(request, response);
@@ -104,17 +114,17 @@ public class FrontControl extends HttpServlet {
 			command = new MySincheongCommand();
 			command.execute(request, response);
 			viewPage = "/myBag.jsp";
-		} else if(com.equals("/addBag.do")) {
+		} else if(com.equals("/addBag.do") && user != null) {
 			addMode = "bag";
 			command = new AddLectureCommand();
 			command.execute(request, response);
 			viewPage = "/class.jsp";
-		} else if(com.equals("/addSincheong.do")) {
+		} else if(com.equals("/addSincheong.do") && user != null) {
 			addMode = "sincheong";
 			command = new AddLectureCommand();
 			command.execute(request, response);
 			viewPage = "/class.jsp";
-		} else if(com.equals("/addMySincheong.do")) {
+		} else if(com.equals("/addMySincheong.do") && user != null) {
 			addMode = "sincheong";
 			command = new AddLectureCommand();
 			command.execute(request, response);
@@ -122,12 +132,12 @@ public class FrontControl extends HttpServlet {
 			command = new RemoveLectureCommand();
 			command.execute(request, response);
 			viewPage = "/myBag.do";
-		} else if(com.equals("/removeBag.do")) {
+		} else if(com.equals("/removeBag.do") && user != null) {
 			removeMode = "bag";
 			command = new RemoveLectureCommand();
 			command.execute(request, response);
 			viewPage = "/myBag.do";
-		} else if(com.equals("/removeSincheong.do")) {
+		} else if(com.equals("/removeSincheong.do") && user != null) {
 			removeMode = "sincheong";
 			command = new RemoveLectureCommand();
 			command.execute(request, response);
@@ -135,6 +145,8 @@ public class FrontControl extends HttpServlet {
 			command = new AddLectureCommand();
 			command.execute(request, response);
 			viewPage = "/myBag.do";
+		} else {
+			viewPage = "/index.do?status=user-failed";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

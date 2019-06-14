@@ -54,6 +54,14 @@
 						</button>
 					</p>
 				</div>
+				<% } else if(request.getParameter("status").equals("user-failed")) { %>
+				<div class="alert alert-danger" role="alert">
+					<p style="font-family: Questrial; margin-bottom: 0; text-align: center;">로그인 후에 이용해 주세요
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</p>
+				</div>
 				<% } %>
 
 				<form class="pt-3 pl-5 pr-5 pb-3" action="login.do"  method="post">
