@@ -36,10 +36,7 @@
 			<small style="font-family: Sunflower;">명지대학교 수강신청 시스템</small>
 		</a>
 		<div class="text-right">
-			<a href="myBag.do"
-				class="btn btn-outline-primary btn-sm">책가방</a> <a
-				href="logout.do"
-				class="btn btn-outline-primary btn-sm">로그아웃</a>
+			<a href="myBag.do" class="btn btn-outline-primary btn-sm">책가방</a> <a href="logout.do" class="btn btn-outline-primary btn-sm">로그아웃</a>
 		</div>
 	</nav>
 
@@ -54,8 +51,7 @@
 	<div class="container">
 		<h5 class="lecture-list">강좌 검색</h5>
 		<div class="row">
-			<form class="text-center" style="margin: 0 auto;" action="lecture.do"
-				method="post">
+			<form class="text-center" style="margin: 0 auto;" action="lecture.do" method="post">
 				<select name="campus" id="campus" onchange="campusChange()">
 					<option value="캠퍼스 선택">캠퍼스 선택</option>
 					<option value="용인캠퍼스">용인캠퍼스</option>
@@ -97,10 +93,10 @@
 				<input type="submit" class="btn btn-info btn-sm" value="담기" onclick="javascript: lecture.action='addBag.do';">
 				<input type="submit" class="btn btn-primary btn-sm" value="신청" onclick="javascript: lecture.action='addSincheong.do';">
 			</div>
-			<table>
+			<table class="table table-sm table-bordered table-hover table-condensed text-center">
 				<thead>
 					<tr>
-						<th><input type="checkbox" name="lecture-all" class="lecture-all"></th>
+						<th><input type="checkbox" name="lecture-all" class="lecture-all" onClick="select(lecture);"></th>
 						<th>강좌 번호</th>
 						<th>강좌명</th>
 						<th>담당 교수</th>
@@ -109,8 +105,8 @@
 					</tr>
 				</thead>
 				<tbody>
-				<!-- Show Lectures -->
-				<% if(request.getAttribute("lectures") != null) {
+					<!-- Show Lectures -->
+			  <% if(request.getAttribute("lectures") != null) {
 					Object lectures = request.getAttribute("lectures");
 					Vector<ELecture> items = (Vector<ELecture>)lectures;
 					for(int index = 0;index < items.size();index++){
@@ -129,7 +125,7 @@
 					}
 				 } else {
 
-				 }%>
+				} %>
 				</tbody>
 			</table>
 		</form>

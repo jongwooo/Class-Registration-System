@@ -40,8 +40,8 @@
 		</div>
 	</nav>
 
-  <!-- My Bag -->
-  <div class="container">
+	<!-- My Bag -->
+	<div class="container">
 		<p class="text-right">
 			<small style="font-family:Sunflower;"><%= session.getAttribute("name") %> 님, 반갑습니다!</small>
 		</p>
@@ -55,20 +55,20 @@
 				<input type="submit" class="btn btn-primary btn-sm" value="신청" onclick="javascript: bag.action='addMySincheong.do';">
 				<input type="submit" class="btn btn-danger btn-sm" value="삭제" onclick="javascript: bag.action='removeBag.do';">
 			</div>
-		<table>
-			<thead>
-				<tr>
-					<th><input type="checkbox" name="bag-all" class="bag-all"></th>
-					<th>강좌 번호</th>
-					<th>강좌명</th>
-					<th>담당 교수</th>
-					<th>학점</th>
-					<th>강의 시간</th>
-				</tr>
-			</thead>
-			<tbody>
-				<!-- Show Lectures -->
-				<% if(request.getAttribute("myBag") != null) {
+			<table class="table table-sm table-bordered table-hover table-condensed text-center">
+				<thead>
+					<tr>
+						<th><input type="checkbox" name="bag-all" class="bag-all" onClick="select(bag);"></th>
+						<th>강좌 번호</th>
+						<th>강좌명</th>
+						<th>담당 교수</th>
+						<th>학점</th>
+						<th>강의 시간</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- Show Lectures -->
+					<% if(request.getAttribute("myBag") != null) {
 					Object myBags = request.getAttribute("myBag");
 					Vector<ELecture> bItems = (Vector<ELecture>)myBags;
 					for(int index = 0;index < bItems.size();index++){
@@ -83,13 +83,13 @@
 						<td><%= bItems.get(index).getCredit() %></td>
 						<td><%= bItems.get(index).getTime() %></td>
 					</tr>
-				<%
+					<%
 					}
 				 } else {
 
 				 }%>
-			</tbody>
-		</table>
+				</tbody>
+			</table>
 		</form>
 		<br>
 		<br>
@@ -103,20 +103,20 @@
 			<div class="text-right pb-2">
 				<input type="submit" class="btn btn-danger btn-sm" value="삭제">
 			</div>
-		<table>
-			<thead>
-				<tr>
-					<th><input type="checkbox" name="sincheong-all" class="sincheong-all"></th>
-					<th>강좌 번호</th>
-					<th>강좌명</th>
-					<th>담당 교수</th>
-					<th>학점</th>
-					<th>강의 시간</th>
-				</tr>
-			</thead>
-			<tbody>
-				<!-- Show Lectures -->
-				<% if(request.getAttribute("sincheong") != null) {
+			<table class="table table-sm table-bordered table-hover table-condensed text-center">
+				<thead>
+					<tr>
+						<th><input type="checkbox" name="sincheong-all" class="sincheong-all" onClick="select(sincheong);"></th>
+						<th>강좌 번호</th>
+						<th>강좌명</th>
+						<th>담당 교수</th>
+						<th>학점</th>
+						<th>강의 시간</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- Show Lectures -->
+					<% if(request.getAttribute("sincheong") != null) {
 					Object sincheongs = request.getAttribute("sincheong");
 					Vector<ELecture> sItems = (Vector<ELecture>)sincheongs;
 					for(int index = 0;index < sItems.size();index++){
@@ -130,14 +130,14 @@
 						<td><%= sItems.get(index).getProfessor() %></td>
 						<td><%= sItems.get(index).getCredit() %></td>
 						<td><%= sItems.get(index).getTime() %></td>
-				  </tr>
-				<%
+					</tr>
+					<%
 					}
 				 } else {
 
 				 }%>
-			</tbody>
-		</table>
+				</tbody>
+			</table>
 		</form>
 		<br>
 		<br>

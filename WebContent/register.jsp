@@ -37,7 +37,7 @@
 				<br>
 				<h1 class="text-center" style="font-family: Questrial;">Register</h1>
 				<% if (request.getParameter("error") == null) { %>
-				
+
 				<% } else if(request.getParameter("error").equals("register-failed")) { %>
 				<div class="alert alert-danger" role="alert">
 					<p style="font-family: Questrial; margin-bottom: 0; text-align: center;">폼을 전부 입력해 주세요
@@ -63,14 +63,14 @@
 					</p>
 				</div>
 				<% } %>
-				<form class="pt-3 pl-5 pr-5 pb-3" action="register.do"  method="post">
+				<form class="pt-3 pl-5 pr-5 pb-3" action="register.do" method="post">
 					<label for="registerName" style="font-family: Questrial;">UserName</label>
 					<input type="text" name="registerName" id="registerName" placeholder="이름" class="form-control">
 					<label for="registerID" style="font-family: Questrial;">UserId</label>
-					<input type="text" name="registerID" id="registerID" placeholder="아이디" class="form-control"> 
-					<label for="registerPW" style="font-family: Questrial;">Password</label> 
+					<input type="text" name="registerID" id="registerID" placeholder="아이디" class="form-control">
+					<label for="registerPW" style="font-family: Questrial;">Password</label>
 					<input type="password" name="registerPW" id="registerPW" placeholder="비밀번호" class="form-control">
-					<label for="confirmPW" style="font-family: Questrial;">Confirm Password</label> 
+					<label for="confirmPW" style="font-family: Questrial;">Confirm Password</label>
 					<input type="password" name="confirmPW" id="confirmPW" placeholder="비밀번호 확인" class="form-control">
 					<br>
 					<div class="button">
@@ -80,7 +80,7 @@
 					</div>
 				</form>
 				<p class="text-center pb-4"><a href="index.jsp" style="color:gray;">로그인</a> | <a href="iforgot.jsp" style="color:gray;">비밀번호찾기</a></p>
-				
+
 			</div>
 		</div>
 	</div>

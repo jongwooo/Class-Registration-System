@@ -54,11 +54,8 @@ div.button {
   text-align: center;
 }
 
-table {
-  text-align: center;
-  width: 100%;
-  border: 1px solid #444444;
-}
-th, td {
-  border: 1px solid #444444;
+ @media ( max-width: 550px ) {
+  table {
+ 	  font-size:0.6rem;	
+  }
 }

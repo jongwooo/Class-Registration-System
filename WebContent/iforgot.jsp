@@ -59,13 +59,13 @@
 				<h1 class="text-center" style="font-family: Questrial;">I Found</h1>
 				<div class="alert alert-success" role="alert">
 					<p style="font-family: Questrial; margin-bottom: 0; text-align: center;">비밀번호는 <%= (String)request.getAttribute("iforgotPW")%> 입니다
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick = "location.href = 'index.jsp'">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="location.href = 'index.jsp'">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</p>
 				</div>
 				<% } %>
-				<form class="pt-3 pl-5 pr-5 pb-3" action="iforgot.do"  method="post">
+				<form class="pt-3 pl-5 pr-5 pb-3" action="iforgot.do" method="post">
 					<label for="iforgotName" style="font-family: Questrial;">UserName</label>
 					<input type="text" name="iforgotName" id="iforgotName" placeholder="이름" class="form-control">
 					<label for="iforgotID" style="font-family: Questrial;">UserId</label>
@@ -78,7 +78,7 @@
 					</div>
 				</form>
 				<p class="text-center pb-4"><a href="index.jsp" style="color:gray;">로그인</a> | <a href="register.jsp" style="color:gray;">회원가입</a></p>
-			
+
 			</div>
 		</div>
 	</div>

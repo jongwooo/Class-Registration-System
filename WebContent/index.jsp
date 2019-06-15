@@ -37,7 +37,7 @@
 				<br>
 				<h1 class="text-center" style="font-family: Questrial;">Login</h1>
 				<% if (request.getParameter("status") == null) { %>
-				
+
 				<% } else if(request.getParameter("status").equals("registerOK")) { %>
 				<div class="alert alert-success" role="alert">
 					<p style="font-family: Questrial; margin-bottom: 0; text-align: center;">회원가입이 정상적으로 처리되었습니다
@@ -64,12 +64,11 @@
 				</div>
 				<% } %>
 
-				<form class="pt-3 pl-5 pr-5 pb-3" action="login.do"  method="post">
+				<form class="pt-3 pl-5 pr-5 pb-3" action="login.do" method="post">
 					<label for="userId" style="font-family: Questrial;">UserId</label>
-					<input type="text" name="userId" id="userId" placeholder="아이디" class="form-control"> 
-					<label for="password" style="font-family: Questrial;">Password</label> 
-					<input type="password" name="password" id="password" placeholder="비밀번호"
-						class="form-control"> <br>
+					<input type="text" name="userId" id="userId" placeholder="아이디" class="form-control">
+					<label for="password" style="font-family: Questrial;">Password</label>
+					<input type="password" name="password" id="password" placeholder="비밀번호" class="form-control"> <br>
 					<div class="button">
 						<button type="submit" class="hover-button">
 							<span>로그인</span>
@@ -77,7 +76,7 @@
 					</div>
 				</form>
 				<p class="text-center pb-4"><a href="register.jsp" style="color:gray;">회원가입</a> | <a href="iforgot.jsp" style="color:gray;">비밀번호찾기</a></p>
-				
+
 			</div>
 		</div>
 	</div>
