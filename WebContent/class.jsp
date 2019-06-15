@@ -96,7 +96,7 @@
 			<table class="table table-sm table-bordered table-hover table-condensed text-center">
 				<thead>
 					<tr>
-						<th><input type="checkbox" name="lecture-all" class="lecture-all" onClick="select(lecture);"></th>
+						<th><input type="checkbox" name="lecture-all" class="lecture-all"></th>
 						<th>강좌 번호</th>
 						<th>강좌명</th>
 						<th>담당 교수</th>

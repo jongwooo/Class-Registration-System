@@ -58,7 +58,7 @@
 			<table class="table table-sm table-bordered table-hover table-condensed text-center">
 				<thead>
 					<tr>
-						<th><input type="checkbox" name="bag-all" class="bag-all" onClick="select(bag);"></th>
+						<th><input type="checkbox" name="bag-all" class="bag-all"></th>
 						<th>강좌 번호</th>
 						<th>강좌명</th>
 						<th>담당 교수</th>
@@ -106,7 +106,7 @@
 			<table class="table table-sm table-bordered table-hover table-condensed text-center">
 				<thead>
 					<tr>
-						<th><input type="checkbox" name="sincheong-all" class="sincheong-all" onClick="select(sincheong);"></th>
+						<th><input type="checkbox" name="sincheong-all" class="sincheong-all"></th>
 						<th>강좌 번호</th>
 						<th>강좌명</th>
 						<th>담당 교수</th>
