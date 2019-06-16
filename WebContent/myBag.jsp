@@ -25,6 +25,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<!-- JS Files -->
 	<script type="text/javascript" src="selectAll.js"></script>
+	<script type="text/javascript" src="selectTable.js"></script>
 </head>
 
 <body>
@@ -75,8 +76,8 @@
 						String bValue = bItems.get(index).getLectureNum() + " " + bItems.get(index).getLectureName()
 								+ " " + bItems.get(index).getProfessor() + " " + bItems.get(index).getCredit() + " " + bItems.get(index).getTime();
 				%>
-					<tr>
-						<td><input type="checkbox" name="selectedLectures" value="<%= bValue %>" class="bag"></td>
+					<tr onclick="selectTable(<%= bItems.get(index).getLectureNum() %>)">
+						<td><input type="checkbox" name="selectedLectures" id="<%= bItems.get(index).getLectureNum() %>" value="<%= bValue %>" class="bag"></td>
 						<td><%= bItems.get(index).getLectureNum() %></td>
 						<td><%= bItems.get(index).getLectureName() %></td>
 						<td><%= bItems.get(index).getProfessor() %></td>
@@ -123,8 +124,8 @@
 						String sValue = sItems.get(index).getLectureNum() + " " + sItems.get(index).getLectureName()
 								+ " " + sItems.get(index).getProfessor() + " " + sItems.get(index).getCredit() + " " + sItems.get(index).getTime();
 				%>
-					<tr>
-						<td><input type="checkbox" name="selectedLectures" value="<%= sValue %>" class="sincheong"></td>
+					<tr onclick="selectTable(<%= sItems.get(index).getLectureNum() %>)">
+						<td><input type="checkbox" name="selectedLectures" id="<%= sItems.get(index).getLectureNum() %>" value="<%= sValue %>" class="sincheong"></td>
 						<td><%= sItems.get(index).getLectureNum() %></td>
 						<td><%= sItems.get(index).getLectureName() %></td>
 						<td><%= sItems.get(index).getProfessor() %></td>

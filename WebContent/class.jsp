@@ -26,6 +26,7 @@
 	<!-- JS Files -->
 	<script type="text/javascript" src="class.js"></script>
 	<script type="text/javascript" src="selectAll.js"></script>
+	<script type="text/javascript" src="selectTable.js"></script>
 </head>
 
 <body>
@@ -143,8 +144,8 @@
 						String value = items.get(index).getLectureNum() + " " + items.get(index).getLectureName()
 								+ " " + items.get(index).getProfessor() + " " + items.get(index).getCredit() + " " + items.get(index).getTime();
 				%>
-					<tr>
-						<td><input type="checkbox" name="selectedLectures" value="<%= value %>" class="lecture"></td>
+					<tr onclick="selectTable(<%= items.get(index).getLectureNum() %>)">
+						<td><input type="checkbox" name="selectedLectures" id="<%= items.get(index).getLectureNum() %>" value="<%= value %>" class="lecture"></td>
 						<td><%= items.get(index).getLectureNum() %></td>
 						<td><%= items.get(index).getLectureName() %></td>
 						<td><%= items.get(index).getProfessor() %></td>
