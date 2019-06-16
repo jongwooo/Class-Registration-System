@@ -118,12 +118,12 @@ public class FrontControl extends HttpServlet {
 			addMode = "bag";
 			command = new AddLectureCommand();
 			command.execute(request, response);
-			viewPage = "/class.jsp";
+			viewPage = AddLectureCommand.viewPage;
 		} else if(com.equals("/addSincheong.do") && user != null) {
 			addMode = "sincheong";
 			command = new AddLectureCommand();
 			command.execute(request, response);
-			viewPage = "/class.jsp";
+			viewPage = AddLectureCommand.viewPage;
 		} else if(com.equals("/addMySincheong.do") && user != null) {
 			addMode = "sincheong";
 			command = new AddLectureCommand();

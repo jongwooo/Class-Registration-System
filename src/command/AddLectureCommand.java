@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import static control.FrontControl.addMode;
 
 public class AddLectureCommand implements Command {
+	
+	public static String viewPage;
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
@@ -58,12 +60,14 @@ public class AddLectureCommand implements Command {
 						fw.write(selectedLectureList.get(i) + "\n");
 					}
 					fw.close();
+					
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 				}
 			} catch (IOException e) {
 
 			}
+			viewPage = "class.jsp?status=" + addMode + "&count=" + selectedLectureList.size();
 		}
 	}
 }

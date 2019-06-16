@@ -86,7 +86,37 @@
 		<%
 			}
 		%>
+		
+		<% if (request.getParameter("status") == null || request.getParameter("count") == null) { %>
+		
+		<% } else if(request.getParameter("count").equals("0")) { %>
+				<div class="alert alert-warning" role="alert">
+					<p style="font-family: Questrial; margin-bottom: 0; text-align: center;">선택한 강좌가 모두 존재합니다
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</p>
+				</div>
+
+		<% } else if(request.getParameter("status").equals("bag")) { %>
+				<div class="alert alert-success" role="alert">
+					<p style="font-family: Questrial; margin-bottom: 0; text-align: center;"><%= request.getParameter("count") %>개의 강좌를 담았습니다
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</p>
+				</div>
+		<% } else if(request.getParameter("status").equals("sincheong")) { %>
+				<div class="alert alert-info" role="alert">
+					<p style="font-family: Questrial; margin-bottom: 0; text-align: center;"><%= request.getParameter("count") %>개의 강좌를 신청했습니다
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</p>
+				</div>
+		<% } %>
 	</div>
+	
 	<div class="container">
 		<form method="post" name="lecture">
 			<div class="text-right pb-2">
