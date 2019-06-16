@@ -118,12 +118,22 @@ public class FrontControl extends HttpServlet {
 			addMode = "bag";
 			command = new AddLectureCommand();
 			command.execute(request, response);
-			viewPage = AddLectureCommand.viewPage;
+			if(AddLectureCommand.addAlert == null) {
+				viewPage = "/class.jsp";
+			} else {
+				viewPage = "/class.jsp" + AddLectureCommand.addAlert;
+				AddLectureCommand.addAlert = null;
+			}
 		} else if(com.equals("/addSincheong.do") && user != null) {
 			addMode = "sincheong";
 			command = new AddLectureCommand();
 			command.execute(request, response);
-			viewPage = AddLectureCommand.viewPage;
+			if(AddLectureCommand.addAlert == null) {
+				viewPage = "/class.jsp";
+			} else {
+				viewPage = "/class.jsp" + AddLectureCommand.addAlert;
+				AddLectureCommand.addAlert = null;
+			}
 		} else if(com.equals("/addMySincheong.do") && user != null) {
 			addMode = "sincheong";
 			command = new AddLectureCommand();

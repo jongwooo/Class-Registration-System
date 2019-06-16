@@ -92,7 +92,7 @@
 		
 		<% } else if(request.getParameter("count").equals("0")) { %>
 				<div class="alert alert-warning" role="alert">
-					<p style="font-family: Questrial; margin-bottom: 0; text-align: center;">선택한 강좌가 모두 존재합니다
+					<p style="font-family: Questrial; margin-bottom: 0; text-align: center;">선택한 강좌가 이미 존재합니다
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>

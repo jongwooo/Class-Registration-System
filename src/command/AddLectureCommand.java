@@ -15,7 +15,7 @@ import static control.FrontControl.addMode;
 
 public class AddLectureCommand implements Command {
 	
-	public static String viewPage;
+	public static String addAlert;
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
@@ -67,7 +67,8 @@ public class AddLectureCommand implements Command {
 			} catch (IOException e) {
 
 			}
-			viewPage = "class.jsp?status=" + addMode + "&count=" + selectedLectureList.size();
+			
+			addAlert = "?status=" + addMode + "&count=" + selectedLectureList.size();
 		}
 	}
 }
