@@ -144,13 +144,13 @@
 						String value = items.get(index).getLectureNum() + " " + items.get(index).getLectureName()
 								+ " " + items.get(index).getProfessor() + " " + items.get(index).getCredit() + " " + items.get(index).getTime();
 				%>
-					<tr onclick="selectTable(<%= items.get(index).getLectureNum() %>)">
+					<tr>
 						<td><input type="checkbox" name="selectedLectures" id="<%= items.get(index).getLectureNum() %>" value="<%= value %>" class="lecture"></td>
-						<td><%= items.get(index).getLectureNum() %></td>
-						<td><%= items.get(index).getLectureName() %></td>
-						<td><%= items.get(index).getProfessor() %></td>
-						<td><%= items.get(index).getCredit() %></td>
-						<td><%= items.get(index).getTime() %></td>
+						<td onclick="selectTable(<%= items.get(index).getLectureNum() %>)"><%= items.get(index).getLectureNum() %></td>
+						<td onclick="selectTable(<%= items.get(index).getLectureNum() %>)"><%= items.get(index).getLectureName() %></td>
+						<td onclick="selectTable(<%= items.get(index).getLectureNum() %>)"><%= items.get(index).getProfessor() %></td>
+						<td onclick="selectTable(<%= items.get(index).getLectureNum() %>)"><%= items.get(index).getCredit() %></td>
+						<td onclick="selectTable(<%= items.get(index).getLectureNum() %>)"><%= items.get(index).getTime() %></td>
 					</tr>
 				<%
 					}

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.LectureCommand;
+import command.AddClassCommand;
 import command.AddLectureCommand;
 import command.Command;
 import command.IForgotCommand;
@@ -18,6 +19,7 @@ import command.LogoutCommand;
 import command.MyBagCommand;
 import command.MySincheongCommand;
 import command.RegisterCommand;
+import command.RemoveClassCommand;
 import command.RemoveLectureCommand;
 
 
@@ -71,6 +73,7 @@ public class FrontControl extends HttpServlet {
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
 		String user = (String)request.getSession().getAttribute("id");
+		String type = (String)request.getSession().getAttribute("type");
 		
 		if(com.equals("/index.do")) {
 			viewPage = "/index.jsp";
@@ -101,11 +104,17 @@ public class FrontControl extends HttpServlet {
 			viewPage = "/index.jsp";
 		} else if(com.equals("/class.do") && user != null) {
 			viewPage = "/class.jsp";
+		} else if(com.equals("/professor.do") && user != null) {
+			viewPage = "/professor.jsp";
 		} else if(com.equals("/lecture.do") && user != null) {
 			lectureMode = "lecture";
 			command = new LectureCommand();
 			command.execute(request, response);
-			viewPage = "/class.jsp";
+			if(type.equals("p")) {
+				viewPage = "/professor.jsp";
+			} else if(type.equals("s")) {
+				viewPage = "/class.jsp";
+			}
 		} else if(com.equals("/myBag.do") && user != null) {
 			lectureMode = "myBag";
 			command = new MyBagCommand();
@@ -155,6 +164,24 @@ public class FrontControl extends HttpServlet {
 			command = new AddLectureCommand();
 			command.execute(request, response);
 			viewPage = "/myBag.do";
+		} else if(com.equals("/addClass.do") && user != null) {
+			command = new AddClassCommand();
+			command.execute(request, response);
+			if(AddClassCommand.addAlert == null) {
+				viewPage = "/professor.jsp";
+			} else {
+				viewPage = "/professor.jsp" + AddClassCommand.addAlert;
+				AddClassCommand.addAlert = null;
+			}
+		} else if(com.equals("/removeClass.do") && user != null) {
+			command = new RemoveClassCommand();
+			command.execute(request, response);
+			if(RemoveClassCommand.removeAlert == null) {
+				viewPage = "/professor.jsp";
+			} else {
+				viewPage = "/professor.jsp" + RemoveClassCommand.removeAlert;
+				RemoveClassCommand.removeAlert = null;
+			}
 		} else {
 			viewPage = "/index.do?status=user-failed";
 		}

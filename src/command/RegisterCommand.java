@@ -27,6 +27,7 @@ public class RegisterCommand implements Command {
 		String registerPW = request.getParameter("registerPW");
 		String confirmPW = request.getParameter("confirmPW");
 		String registerName = request.getParameter("registerName");
+		String registerType = request.getParameter("registerType");
 		int index = 0;
 		boolean exist = false;
 		
@@ -38,7 +39,7 @@ public class RegisterCommand implements Command {
 					exist = true;
 				}
 			}
-			if(registerID.equals("") || registerPW.equals("") || confirmPW.equals("") || registerName.equals("")) {
+			if(registerID.equals("") || registerPW.equals("") || confirmPW.equals("") || registerType.equals("") || registerName.equals("")) {
 				viewPage = "register.jsp?error=register-failed";
 			} else if(exist) {
 				viewPage = "register.jsp?error=exist-failed";
@@ -46,7 +47,7 @@ public class RegisterCommand implements Command {
 				viewPage = "register.jsp?error=password-failed";
 			} else {
 				FileWriter fw = new FileWriter(registerPath + "/login", true);
-				fw.write(registerID + " " + registerPW + " " + registerName + "\n");
+				fw.write(registerID + " " + registerPW + " " + registerType + " " + registerName + "\n");
 				fw.close();
 				viewPage = "index.jsp?status=registerOK";
 			}

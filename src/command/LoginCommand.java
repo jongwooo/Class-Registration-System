@@ -34,7 +34,12 @@ public class LoginCommand implements Command {
 					found = true;
 					request.getSession().setAttribute("id", items.get(index).getUserID());
 					request.getSession().setAttribute("name", items.get(index).getUserName());
-					viewPage = "/class.jsp";
+					request.getSession().setAttribute("type", items.get(index).getUserType());
+					if(items.get(index).getUserType().equals("p")) {
+						viewPage = "/professor.jsp";
+					} else if(items.get(index).getUserType().equals("s")) {
+						viewPage = "/class.jsp";
+					}
 				}
 			}
 		} catch (FileNotFoundException e) {

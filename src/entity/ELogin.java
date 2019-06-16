@@ -4,11 +4,13 @@ import java.util.Scanner;
 public class ELogin {
 	private String userID;
 	private String userPW;
+	private String userType;
 	private String userName;
 	
 	public void read(Scanner scanner) {
 		userID = scanner.next();
 		userPW = scanner.next();
+		userType = scanner.next();
 		userName = scanner.next();
 	}
 
@@ -18,6 +20,10 @@ public class ELogin {
 
 	public String getUserPW() {
 		return userPW;
+	}
+	
+	public String getUserType() {
+		return userType;
 	}
 
 	public String getUserName() {

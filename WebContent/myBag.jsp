@@ -76,13 +76,13 @@
 						String bValue = bItems.get(index).getLectureNum() + " " + bItems.get(index).getLectureName()
 								+ " " + bItems.get(index).getProfessor() + " " + bItems.get(index).getCredit() + " " + bItems.get(index).getTime();
 				%>
-					<tr onclick="selectTable(<%= bItems.get(index).getLectureNum() %>)">
+					<tr>
 						<td><input type="checkbox" name="selectedLectures" id="<%= bItems.get(index).getLectureNum() %>" value="<%= bValue %>" class="bag"></td>
-						<td><%= bItems.get(index).getLectureNum() %></td>
-						<td><%= bItems.get(index).getLectureName() %></td>
-						<td><%= bItems.get(index).getProfessor() %></td>
-						<td><%= bItems.get(index).getCredit() %></td>
-						<td><%= bItems.get(index).getTime() %></td>
+						<td onclick="selectTable(<%= bItems.get(index).getLectureNum() %>)"><%= bItems.get(index).getLectureNum() %></td>
+						<td onclick="selectTable(<%= bItems.get(index).getLectureNum() %>)"><%= bItems.get(index).getLectureName() %></td>
+						<td onclick="selectTable(<%= bItems.get(index).getLectureNum() %>)"><%= bItems.get(index).getProfessor() %></td>
+						<td onclick="selectTable(<%= bItems.get(index).getLectureNum() %>)"><%= bItems.get(index).getCredit() %></td>
+						<td onclick="selectTable(<%= bItems.get(index).getLectureNum() %>)"><%= bItems.get(index).getTime() %></td>
 					</tr>
 					<%
 					}
@@ -124,13 +124,13 @@
 						String sValue = sItems.get(index).getLectureNum() + " " + sItems.get(index).getLectureName()
 								+ " " + sItems.get(index).getProfessor() + " " + sItems.get(index).getCredit() + " " + sItems.get(index).getTime();
 				%>
-					<tr onclick="selectTable(<%= sItems.get(index).getLectureNum() %>)">
+					<tr>
 						<td><input type="checkbox" name="selectedLectures" id="<%= sItems.get(index).getLectureNum() %>" value="<%= sValue %>" class="sincheong"></td>
-						<td><%= sItems.get(index).getLectureNum() %></td>
-						<td><%= sItems.get(index).getLectureName() %></td>
-						<td><%= sItems.get(index).getProfessor() %></td>
-						<td><%= sItems.get(index).getCredit() %></td>
-						<td><%= sItems.get(index).getTime() %></td>
+						<td onclick="selectTable(<%= sItems.get(index).getLectureNum() %>)"><%= sItems.get(index).getLectureNum() %></td>
+						<td onclick="selectTable(<%= sItems.get(index).getLectureNum() %>)"><%= sItems.get(index).getLectureName() %></td>
+						<td onclick="selectTable(<%= sItems.get(index).getLectureNum() %>)"><%= sItems.get(index).getProfessor() %></td>
+						<td onclick="selectTable(<%= sItems.get(index).getLectureNum() %>)"><%= sItems.get(index).getCredit() %></td>
+						<td onclick="selectTable(<%= sItems.get(index).getLectureNum() %>)"><%= sItems.get(index).getTime() %></td>
 					</tr>
 					<%
 					}

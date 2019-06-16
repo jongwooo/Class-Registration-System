@@ -73,6 +73,13 @@
 					<label for="confirmPW" style="font-family: Questrial;">Confirm Password</label>
 					<input type="password" name="confirmPW" id="confirmPW" placeholder="비밀번호 확인" class="form-control">
 					<br>
+					<label class="radio-inline pr-2">
+					  <input type="radio" name="registerType" value="p"> 교수
+					</label>
+					<label class="radio-inline">
+					  <input type="radio" name="registerType" value="s" checked> 학생
+					</label>
+					<br>
 					<div class="button">
 						<button type="submit" class="hover-button">
 							<span>회원가입</span>
