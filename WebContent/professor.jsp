@@ -83,9 +83,17 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</p>
-				</div>	
-		<% } else if(request.getParameter("status").equals("add-failed")) { %>
+				</div>
+		<% } else if(request.getParameter("status").equals("directory-failed")) { %>
 				<div class="alert alert-danger" role="alert">
+					<p style="font-family: Questrial; margin-bottom: 0; text-align: center;"> 강좌 검색을 먼저 진행해 주세요
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</p>
+				</div>				
+		<% } else if(request.getParameter("status").equals("add-failed")) { %>
+				<div class="alert alert-warning" role="alert">
 					<p style="font-family: Questrial; margin-bottom: 0; text-align: center;"> <%= request.getParameter("lecture") %> 강좌가 이미 존재합니다
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
@@ -120,10 +128,12 @@
 			if (request.getParameter("campus") == null || request.getParameter("college") == null
 					|| request.getParameter("department") == null) {
 		%>
-		<h5 class="lecture-list">강좌 목록</h5>
+			<h5 class="lecture-list">강좌 목록</h5>
 		<%
-			} else {
-		%>
+			} else if(request.getParameter("campus").equals("null") || request.getParameter("college").equals("null")
+			|| request.getParameter("department").equals("null")) {%>
+			<h5 class="lecture-list">강좌 목록</h5>
+		<% } else { %>
 		<h5 class="lecture-list">
 			<%=request.getParameter("campus")%>
 			/

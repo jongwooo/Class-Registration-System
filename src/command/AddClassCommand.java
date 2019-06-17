@@ -31,6 +31,8 @@ public class AddClassCommand implements Command {
 			boolean found = false;	
 			if(lectureNum.equals("") || lectureName.equals("") || credit.equals("") || time.equals("")) {
 				addAlert = "?status=form-failed&lecture=";
+			} else if(campus.equals("캠퍼스 선택") || college.equals("분류 선택") || department.equals("분류 선택")) {
+				addAlert = "?status=directory-failed&lecture=";
 			} else {
 				String newClass = lectureNum + " " + lectureName + " " + professor + " " + credit + " " + time;
 				Scanner scanner = new Scanner(new File(classPath));
