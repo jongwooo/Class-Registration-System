@@ -7,6 +7,6 @@ Class Registration System
 
 ---
 
-This is a class registration service, a project of the Department of Convergence Software at Myongji University.
+This is a class registration system, a project of the Department of Convergence Software at Myongji University.
 
 [Demo][http://han980817.cafe24.com/](http://han980817.cafe24.com/)
