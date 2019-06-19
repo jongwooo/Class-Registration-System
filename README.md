@@ -1,7 +1,7 @@
 Class Registration System
 -------------------------
 
-![Version](https://img.shields.io/badge/Version-3.0.0-green.svg) ![Language](https://img.shields.io/badge/Language-Java-darkgreen.svg) ![University](https://img.shields.io/badge/University-MJU(Seoul)-blue.svg)
+![Version](https://img.shields.io/badge/Version-3.0.0-green.svg) ![Build](https://img.shields.io/badge/Build-Passing-success.svg) ![Language](https://img.shields.io/badge/Language-Java-darkgreen.svg) ![University](https://img.shields.io/badge/University-MJU(Seoul)-9cf.svg) ![License](https://img.shields.io/badge/License-MIT-informational.svg)
 
 ### 1. INFO
 
